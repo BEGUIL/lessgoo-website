@@ -1,0 +1,391 @@
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LessGooo | DevOps Training Center</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-color: #007bb5; /* Bleu-cyan plus profond pour le contraste sur blanc */
+            --primary-hover: #0088cc;
+            --secondary-color: #00aeef;
+            --bg-color: #ffffff;
+            --text-color: #1a1a1a;
+            --header-bg: #ffffff;
+            --top-bar-bg: #f1f3f5; /* Gris clair pour détacher la barre du header blanc */
+            --top-bar-text: #1a1a1a; /* Texte plus contrasté */
+            --dropdown-bg: #ffffff;
+            --header-scroll-bg: rgba(255, 255, 255, 0.95);
+            --text-muted: #4c4c4c; /* Gris plus foncé pour la lisibilité */
+            --transition: all 0.3s ease;
+        }
+
+        /* Variables pour le mode sombre */
+        body.dark-theme {
+            --primary-color: #00aeef; /* Cyan vif sur fond noir */
+            --bg-color: #0f0f0f;
+            --text-color: #ffffff;
+            --header-bg: #0a0a0a;
+            --top-bar-bg: #000000;
+            --top-bar-text: #ffffff;
+            --dropdown-bg: #1a1a1a;
+            --header-scroll-bg: rgba(10, 10, 10, 0.95);
+            --text-muted: #aaa;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.6;
+            overflow-x: hidden;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        /* --- TOP BAR --- */
+        .top-bar {
+            background: var(--top-bar-bg);
+            color: var(--top-bar-text);
+            padding: 10px 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 0.85rem;
+            margin-bottom: 15px; /* Espace ajouté sous la barre d'infos */
+        }
+
+        .top-bar .contact-info span {
+            margin-right: 20px;
+        }
+
+        .top-bar i {
+            color: var(--primary-color);
+            margin-right: 8px;
+        }
+
+        .social-links i {
+            margin-left: 15px;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+        .social-links i:hover { color: var(--primary-hover); }
+
+        /* --- HEADER & NAVIGATION --- */
+        .main-header {
+            background: var(--header-bg);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            position: sticky;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            transition: var(--transition);
+            border-bottom: 1px solid rgba(0,0,0,0.05);
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 5%;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .logo img {
+            height: 65px; /* Logo bien agrandi */
+            width: auto;
+            object-fit: contain;
+            display: block;
+            transition: opacity 0.3s ease;
+        }
+
+        .nav-menu {
+            list-style: none;
+            display: flex;
+            gap: 30px;
+            align-items: center;
+        }
+
+        .nav-item { position: relative; }
+
+        .nav-link {
+            text-decoration: none;
+            color: var(--text-color);
+            font-weight: 500;
+            font-size: 0.95rem;
+            text-transform: uppercase;
+            transition: var(--transition);
+        }
+
+        .nav-link:hover { color: var(--primary-color); }
+
+        /* --- DROPDOWN --- */
+        .dropdown-content {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background: var(--dropdown-bg);
+            min-width: 220px;
+            box-shadow: 0 8px 15px rgba(0,0,0,0.1);
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(10px);
+            transition: var(--transition);
+            list-style: none;
+            padding: 10px 0;
+            border-top: 3px solid var(--primary-color);
+        }
+
+        .nav-item:hover .dropdown-content {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+
+        .dropdown-content a {
+            padding: 12px 20px;
+            display: block;
+            text-decoration: none;
+            color: var(--text-color);
+            font-size: 0.9rem;
+            transition: var(--transition);
+        }
+
+        .dropdown-content a:hover {
+            background: rgba(0, 174, 239, 0.1);
+            color: var(--primary-color);
+            padding-left: 25px;
+        }
+
+        /* --- CTA BUTTON --- */
+        .btn-enroll {
+            background: var(--primary-color);
+            color: #ffffff;
+            padding: 12px 25px;
+            border-radius: 5px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: var(--transition);
+            border: 2px solid var(--primary-color);
+        }
+
+        .btn-enroll:hover {
+            background: transparent;
+            color: var(--primary-color);
+        }
+
+        /* --- THEME TOGGLE --- */
+        .theme-toggle {
+            cursor: pointer;
+            font-size: 1.2rem;
+            color: var(--text-color);
+            margin-left: 20px;
+            display: flex;
+            align-items: center;
+            transition: var(--transition);
+        }
+        .theme-toggle:hover { color: var(--primary-color); }
+
+        /* --- BURGER MOBILE --- */
+        .menu-toggle {
+            display: none;
+            color: var(--text-color);
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        #check { display: none; }
+
+        /* --- RESPONSIVE ADJUSTMENTS --- */
+        @media (max-width: 1024px) {
+            .nav-menu { gap: 15px; }
+            .nav-link { font-size: 0.85rem; }
+        }
+
+        @media (max-width: 991px) {
+            .top-bar { display: none; } /* On cache la barre de contact sur mobile */
+            .menu-toggle { display: block; }
+            .logo img { height: 50px; }
+            
+            .nav-menu {
+                position: fixed;
+                top: 70px;
+                left: -100%;
+                flex-direction: column;
+                background: var(--bg-color);
+                width: 100%;
+                height: calc(100vh - 70px);
+                text-align: center;
+                transition: all 0.4s ease-in-out;
+                padding-top: 40px;
+                overflow-y: auto;
+            }
+
+            #check:checked ~ .nav-container .nav-menu { left: 0; }
+            .theme-toggle { margin: 20px 0; justify-content: center; }
+            
+            .nav-menu li { 
+                width: 100%; 
+                margin: 10px 0;
+            }
+
+            .nav-link {
+                font-size: 1.2rem;
+                padding: 10px;
+                display: block;
+            }
+
+            .dropdown-content { position: static; opacity: 1; visibility: visible; box-shadow: none; transform: none; display: none; }
+            .nav-item:hover .dropdown-content { display: block; }
+
+            .btn-enroll {
+                display: inline-block;
+                margin-top: 20px;
+                width: 80%;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .logo img { height: 40px; }
+            main h1 { font-size: 2rem !important; }
+        }
+
+        /* Style pour l'effet de dactylographie */
+        .typing-cursor {
+            border-right: 3px solid var(--primary-color);
+            animation: blink 0.7s infinite;
+            margin-left: 5px;
+        }
+        @keyframes blink { 50% { border-color: transparent; } }
+    </style>
+</head>
+<body>
+    <div class="top-bar">
+        <div class="contact-info">
+            <span><i class="fas fa-envelope"></i> info@lessgooo.com</span>
+            <span><i class="fas fa-phone"></i> +237 656 84 48 82</span>
+        </div>
+        <div class="social-links">
+            <i class="fab fa-facebook"></i>
+            <i class="fab fa-tiktok"></i>
+            <i class="fab fa-youtube"></i>
+        </div>
+    </div>
+
+    <header class="main-header">
+        <input type="checkbox" id="check">
+        <nav class="nav-container">
+            <div class="logo">
+                <img id="logo-img" src="logo2.png" alt="LessGooo Logo">
+            </div>
+
+            <label for="check" class="menu-toggle">
+                <i class="fas fa-bars"></i>
+            </label>
+
+            <ul class="nav-menu">
+                <li class="nav-item"><a href="#" class="nav-link">Accueil</a></li>
+                <li class="nav-item">
+                    <a href="#" class="nav-link">Formations <i class="fas fa-chevron-down" style="font-size: 0.7rem;"></i></a>
+                    <ul class="dropdown-content">
+                        <li><a href="#">DevOps Foundation</a></li>
+                        <li><a href="#">AWS Cloud Solutions</a></li>
+                        <li><a href="#">Kubernetes Expert</a></li>
+                        <li><a href="#">CI/CD Pipelines</a></li>
+                    </ul>
+                </li>
+                <li class="nav-item"><a href="#" class="nav-link">Infrastructure</a></li>
+                <li class="nav-item"><a href="#" class="nav-link">Blog</a></li>
+                <li class="nav-item"><a href="#" class="nav-link">Contact</a></li>
+                <li><a href="#" class="btn-enroll">S'inscrire</a></li>
+                <li class="theme-toggle" id="theme-btn"><i class="fas fa-moon"></i></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main style="padding: 150px 5% 100px; max-width: 1200px; margin: 0 auto;">
+        <section>
+            <h1 style="font-size: 3.5rem; font-weight: 800; margin-bottom: 20px; line-height: 1.1;">Propulsez votre carrière avec <span id="typing-text" style="color: var(--primary-color);"></span><span class="typing-cursor"></span></h1>
+            <p style="font-size: 1.25rem; color: var(--text-muted); max-width: 700px;">La plateforme de référence pour la formation DevOps et Cloud Native. Apprenez les outils de demain : Docker, Kubernetes, Terraform et plus encore.</p>
+        </section>
+    </main>
+
+    <script>
+        // Gestion du Theme (Clair/Sombre)
+        const themeBtn = document.getElementById('theme-btn');
+        const body = document.body;
+        const logoImg = document.getElementById('logo-img');
+        const themeIcon = themeBtn.querySelector('i');
+
+        // Fonction pour mettre à jour l'apparence du header au scroll
+        function updateHeaderScroll() {
+            const header = document.querySelector('.main-header');
+            if (window.scrollY > 50) {
+                header.style.padding = '5px 0';
+                header.style.background = 'var(--header-scroll-bg)';
+            } else {
+                header.style.padding = '15px 0';
+                header.style.background = 'var(--header-bg)';
+            }
+        }
+
+        function setTheme(isDark) {
+            body.classList.toggle('dark-theme', isDark);
+            logoImg.src = isDark ? 'logo1.jpg' : 'logo2.png';
+            themeIcon.className = isDark ? 'fas fa-sun' : 'fas fa-moon';
+            localStorage.setItem('theme', isDark ? 'dark' : 'light');
+            updateHeaderScroll(); // Mise à jour immédiate du header
+        }
+
+        themeBtn.addEventListener('click', () => {
+            setTheme(!document.body.classList.contains('dark-theme'));
+        });
+
+        // Initialisation : Mode Clair par défaut (logo2.png)
+        const savedTheme = localStorage.getItem('theme') || 'light';
+        setTheme(savedTheme === 'dark');
+
+        window.addEventListener('scroll', updateHeaderScroll);
+
+        // Animation de texte (Typewriter effect)
+        const textElement = document.getElementById('typing-text');
+        const words = ["LessGooo", "le DevOps", "le Cloud", "l'Infrastructure"];
+        let wordIndex = 0;
+        let charIndex = 0;
+        let isDeleting = false;
+
+        function typeEffect() {
+            const currentWord = words[wordIndex];
+            
+            if (isDeleting) {
+                textElement.textContent = currentWord.substring(0, charIndex - 1);
+                charIndex--;
+            } else {
+                textElement.textContent = currentWord.substring(0, charIndex + 1);
+                charIndex++;
+            }
+
+            let typeSpeed = isDeleting ? 100 : 200;
+
+            if (!isDeleting && charIndex === currentWord.length) {
+                isDeleting = true;
+                typeSpeed = 2000; // Pause à la fin du mot
+            } else if (isDeleting && charIndex === 0) {
+                isDeleting = false;
+                wordIndex = (wordIndex + 1) % words.length;
+                typeSpeed = 500;
+            }
+
+            setTimeout(typeEffect, typeSpeed);
+        }
+
+        // Démarrage au chargement de la page
+        document.addEventListener('DOMContentLoaded', typeEffect);
+    </script>
+</body>
+</html>
