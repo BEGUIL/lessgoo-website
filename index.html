@@ -222,6 +222,10 @@
         #check { display: none; }
 
         /* --- RESPONSIVE ADJUSTMENTS --- */
+        .mobile-lang-switcher {
+            display: none; /* Caché sur desktop */
+        }
+
         @media (max-width: 1024px) {
             .nav-menu { gap: 15px; }
             .nav-link { font-size: 0.85rem; }
@@ -267,6 +271,18 @@
                 display: inline-block;
                 margin-top: 20px;
                 width: 80%;
+            }
+
+            .mobile-lang-switcher {
+                display: block;
+                margin: 20px 0;
+                padding-top: 15px;
+                border-top: 1px solid rgba(128, 128, 128, 0.2);
+            }
+            .mobile-lang-switcher .language-switcher {
+                display: flex;
+                justify-content: center;
+                gap: 15px;
             }
         }
 
@@ -368,6 +384,13 @@
                 <li class="nav-item"><a href="#" class="nav-link" data-i18n="nav_contact">Contact</a></li>
                 <li><a href="#" class="btn-enroll" data-i18n="btn_enroll">S'inscrire</a></li>
                 <li class="theme-toggle" id="theme-btn"><i class="fas fa-moon"></i></li>
+                <li class="mobile-lang-switcher">
+                    <div class="language-switcher">
+                        <span class="lang-btn active" onclick="changeLanguage('fr')">FR</span>
+                        <span class="lang-separator">|</span>
+                        <span class="lang-btn" onclick="changeLanguage('en')">EN</span>
+                    </div>
+                </li>
             </ul>
         </nav>
     </header>

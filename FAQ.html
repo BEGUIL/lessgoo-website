@@ -220,6 +220,10 @@
         #check { display: none; }
 
         /* --- RESPONSIVE ADJUSTMENTS --- */
+        .mobile-lang-switcher {
+            display: none;
+        }
+
         @media (max-width: 1024px) {
             .nav-menu { gap: 15px; }
             .nav-link { font-size: 0.85rem; }
@@ -266,6 +270,18 @@
                 margin-top: 20px;
                 width: 80%;
             }
+
+            .mobile-lang-switcher {
+                display: block;
+                margin: 20px 0;
+                padding-top: 15px;
+                border-top: 1px solid rgba(128, 128, 128, 0.2);
+            }
+            .mobile-lang-switcher .language-switcher {
+                display: flex;
+                justify-content: center;
+                gap: 15px;
+            }
         }
 
         @media (max-width: 480px) {
@@ -274,8 +290,7 @@
 
         /* FAQ Specific Styles */
         .faq-hero {
-            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('tr.jpg');
-            background-size: cover; background-position: center; padding: 100px 5%; color: #fff; text-align: center;
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('tr.jpg'); background-size: cover; background-position: center; padding: 100px 5%; color: #fff; text-align: center;
         }
         .faq-grid { 
             display: grid; 
@@ -347,6 +362,13 @@
                 <li class="nav-item"><a href="#" class="nav-link" data-i18n="nav_contact">Contact</a></li>
                 <li><a href="#" class="btn-enroll" data-i18n="btn_enroll">S'inscrire</a></li>
                 <li class="theme-toggle" id="theme-btn"><i class="fas fa-moon"></i></li>
+                <li class="mobile-lang-switcher">
+                    <div class="language-switcher">
+                        <span class="lang-btn active" onclick="changeLanguage('fr')">FR</span>
+                        <span class="lang-separator">|</span>
+                        <span class="lang-btn" onclick="changeLanguage('en')">EN</span>
+                    </div>
+                </li>
             </ul>
         </nav>
     </header>
