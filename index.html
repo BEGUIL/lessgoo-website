@@ -1,3 +1,6 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>LessGooo | DevOps Training Center</title>
@@ -68,6 +71,23 @@
             margin-right: 8px;
         }
 
+        .top-bar-right {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .language-switcher {
+            font-weight: 600;
+            cursor: pointer;
+            font-size: 0.8rem;
+        }
+
+        .lang-btn { transition: var(--transition); opacity: 0.5; }
+        .lang-btn.active { opacity: 1; color: var(--primary-color); }
+        .lang-btn:hover { opacity: 1; }
+        .lang-separator { margin: 0 5px; opacity: 0.3; }
+
         .social-links i {
             margin-left: 15px;
             cursor: pointer;
@@ -91,13 +111,13 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 15px 5%;
+            padding: 10px 5%;
             max-width: 1400px;
             margin: 0 auto;
         }
 
         .logo img {
-            height: 65px; /* Logo bien agrandi */
+            height: 65px; /* Taille réduite pour un menu plus fin */
             width: auto;
             object-fit: contain;
             display: block;
@@ -210,7 +230,7 @@
         @media (max-width: 991px) {
             .top-bar { display: none; } /* On cache la barre de contact sur mobile */
             .menu-toggle { display: block; }
-            .logo img { height: 50px; }
+            .logo img { height: 55px; }
             
             .nav-menu {
                 position: fixed;
@@ -251,7 +271,7 @@
         }
 
         @media (max-width: 480px) {
-            .logo img { height: 40px; }
+            .logo img { height: 45px; }
             main h1 { font-size: 2rem !important; }
         }
 
@@ -262,6 +282,41 @@
             margin-left: 5px;
         }
         @keyframes blink { 50% { border-color: transparent; } }
+
+        /* --- HERO SECTION (Background Image) --- */
+        .hero-section {
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('logo5.jpg');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed; /* Effet pro de parallaxe */
+            padding: 20vh 5% 80px; /* Positionne le texte plus haut (20% du haut) */
+            color: #ffffff;
+            text-align: center;
+            min-height: 100vh;
+            display: flex;
+            align-items: flex-start; /* Aligne vers le haut au lieu du centre */
+            justify-content: center;
+        }
+
+        .hero-container {
+            max-width: 1200px;
+            width: 100%;
+            margin: 0 auto;
+        }
+
+        .hero-section h1 {
+            font-size: clamp(2rem, 5vw, 3.5rem); /* Taille fluide et responsive */
+            font-weight: 800;
+            margin-bottom: 20px;
+            line-height: 1.1;
+        }
+
+        .hero-section p {
+            font-size: clamp(1rem, 2vw, 1.25rem); /* Taille fluide et responsive */
+            color: rgba(255, 255, 255, 0.9);
+            max-width: 800px;
+            margin: 0 auto;
+        }
     </style>
 </head>
 <body>
@@ -269,11 +324,19 @@
         <div class="contact-info">
             <span><i class="fas fa-envelope"></i> info@lessgooo.com</span>
             <span><i class="fas fa-phone"></i> +237 656 84 48 82</span>
+            <span><i class="fas fa-phone"></i> +237 675 62 72 71</span>
         </div>
-        <div class="social-links">
-            <i class="fab fa-facebook"></i>
-            <i class="fab fa-tiktok"></i>
-            <i class="fab fa-youtube"></i>
+        <div class="top-bar-right">
+            <div class="language-switcher">
+                <span class="lang-btn active" onclick="changeLanguage('fr')">FR</span>
+                <span class="lang-separator">|</span>
+                <span class="lang-btn" onclick="changeLanguage('en')">EN</span>
+            </div>
+            <div class="social-links">
+                <i class="fab fa-facebook"></i>
+                <i class="fab fa-tiktok"></i>
+                <i class="fab fa-youtube"></i>
+            </div>
         </div>
     </div>
 
@@ -289,9 +352,9 @@
             </label>
 
             <ul class="nav-menu">
-                <li class="nav-item"><a href="#" class="nav-link">Accueil</a></li>
+                <li class="nav-item"><a href="#" class="nav-link" data-i18n="nav_home">Accueil</a></li>
                 <li class="nav-item">
-                    <a href="#" class="nav-link">Formations <i class="fas fa-chevron-down" style="font-size: 0.7rem;"></i></a>
+                    <a href="#" class="nav-link"><span data-i18n="nav_courses">Formations</span> <i class="fas fa-chevron-down" style="font-size: 0.7rem;"></i></a>
                     <ul class="dropdown-content">
                         <li><a href="#">DevOps Foundation</a></li>
                         <li><a href="#">AWS Cloud Solutions</a></li>
@@ -299,20 +362,23 @@
                         <li><a href="#">CI/CD Pipelines</a></li>
                     </ul>
                 </li>
-                <li class="nav-item"><a href="#" class="nav-link">Infrastructure</a></li>
-                <li class="nav-item"><a href="#" class="nav-link">Blog</a></li>
-                <li class="nav-item"><a href="#" class="nav-link">Contact</a></li>
-                <li><a href="#" class="btn-enroll">S'inscrire</a></li>
+                <li class="nav-item"><a href="#" class="nav-link" data-i18n="nav_infra">Infrastructure</a></li>
+                <li class="nav-item"><a href="#" class="nav-link" data-i18n="nav_blog">Blog</a></li>
+                <li class="nav-item"><a href="FAQ.html" class="nav-link" data-i18n="nav_faq">FAQ</a></li>
+                <li class="nav-item"><a href="#" class="nav-link" data-i18n="nav_contact">Contact</a></li>
+                <li><a href="#" class="btn-enroll" data-i18n="btn_enroll">S'inscrire</a></li>
                 <li class="theme-toggle" id="theme-btn"><i class="fas fa-moon"></i></li>
             </ul>
         </nav>
     </header>
 
-    <main style="padding: 150px 5% 100px; max-width: 1200px; margin: 0 auto;">
-        <section>
-            <h1 style="font-size: 3.5rem; font-weight: 800; margin-bottom: 20px; line-height: 1.1;">Propulsez votre carrière avec <span id="typing-text" style="color: var(--primary-color);"></span><span class="typing-cursor"></span></h1>
-            <p style="font-size: 1.25rem; color: var(--text-muted); max-width: 700px;">La plateforme de référence pour la formation DevOps et Cloud Native. Apprenez les outils de demain : Docker, Kubernetes, Terraform et plus encore.</p>
-        </section>
+    <main class="hero-section">
+        <div class="hero-container">
+            <section>
+                <h1><span data-i18n="hero_title">Propulsez votre carrière avec </span><span id="typing-text" style="color: var(--primary-color);"></span><span class="typing-cursor"></span></h1>
+                <p data-i18n="hero_desc">L'ecole de référence pour la formation DevOps et Cloud Native. Apprenez les outils de demain : Docker, Kubernetes, Terraform et plus encore.</p>
+            </section>
+        </div>
     </main>
 
     <script>
@@ -329,9 +395,37 @@
                 header.style.padding = '5px 0';
                 header.style.background = 'var(--header-scroll-bg)';
             } else {
-                header.style.padding = '15px 0';
+                header.style.padding = '10px 0';
                 header.style.background = 'var(--header-bg)';
             }
+        }
+
+        // --- ANIMATION DE TEXTE (Typewriter effect) ---
+        const textElement = document.getElementById('typing-text');
+        let wordIndex = 0;
+        let charIndex = 0;
+        let isDeleting = false;
+        let words = []; // Sera initialisé par changeLanguage
+
+        function typeEffect() {
+            if (!words.length) return;
+            const currentWord = words[wordIndex];
+            
+            charIndex = isDeleting ? charIndex - 1 : charIndex + 1;
+            textElement.textContent = currentWord.substring(0, charIndex);
+
+            let typeSpeed = isDeleting ? 100 : 200;
+
+            if (!isDeleting && charIndex === currentWord.length) {
+                isDeleting = true;
+                typeSpeed = 1000; // Pause réduite en fin de mot pour une boucle plus fluide
+            } else if (isDeleting && charIndex === 0) {
+                isDeleting = false;
+                wordIndex = (wordIndex + 1) % words.length;
+                typeSpeed = 200; // Pause réduite avant de taper le mot suivant
+            }
+
+            setTimeout(typeEffect, typeSpeed);
         }
 
         function setTheme(isDark) {
@@ -342,6 +436,59 @@
             updateHeaderScroll(); // Mise à jour immédiate du header
         }
 
+        // --- SYSTEME MULTILINGUE ---
+        const translations = {
+            fr: {
+                nav_home: "Accueil",
+                nav_courses: "Formations",
+                nav_infra: "Infrastructure",
+                nav_blog: "Blog",
+                nav_faq: "FAQ",
+                nav_contact: "Contact",
+                btn_enroll: "S'inscrire",
+                hero_title: "Propulsez votre carrière avec ",
+                hero_desc: "L'ecole de référence pour la formation DevOps et Cloud Native. Apprenez les outils de demain : Docker, Kubernetes, Terraform et plus encore.",
+                typing_words: ["LessGooo", "le DevOps", "le Cloud", "l'Infrastructure"]
+            },
+            en: {
+                nav_home: "Home",
+                nav_courses: "Courses",
+                nav_infra: "Infrastructure",
+                nav_blog: "Blog",
+                nav_faq: "FAQ",
+                nav_contact: "Contact",
+                btn_enroll: "Enroll Now",
+                hero_title: "Boost your career with ",
+                hero_desc: "The leading school for DevOps and Cloud Native training. Learn tomorrow's tools: Docker, Kubernetes, Terraform and more.",
+                typing_words: ["LessGooo", "DevOps", "Cloud", "Infrastructure"]
+            }
+        };
+
+        let currentLang = localStorage.getItem('lang') || 'fr';
+
+        function changeLanguage(lang) {
+            currentLang = lang;
+            localStorage.setItem('lang', lang);
+            
+            document.querySelectorAll('[data-i18n]').forEach(element => {
+                const key = element.getAttribute('data-i18n');
+                if (translations[lang][key]) element.textContent = translations[lang][key];
+            });
+
+            document.querySelectorAll('.lang-btn').forEach(btn => {
+                btn.classList.toggle('active', btn.textContent.toLowerCase() === lang);
+            });
+
+            // Mise à jour instantanée de l'animation de texte
+            words = translations[lang].typing_words;
+            // On ne réinitialise pas forcément les index pour éviter un saut visuel brusque, 
+            // sauf si on change de langue pendant que l'animation tourne.
+            wordIndex = 0;
+            charIndex = 0;
+            isDeleting = false; // Indispensable pour éviter que l'index ne devienne négatif
+            if (textElement) textElement.textContent = ''; // Vide le texte immédiatement
+        }
+
         themeBtn.addEventListener('click', () => {
             setTheme(!document.body.classList.contains('dark-theme'));
         });
@@ -349,43 +496,12 @@
         // Initialisation : Mode Clair par défaut (logo2.png)
         const savedTheme = localStorage.getItem('theme') || 'light';
         setTheme(savedTheme === 'dark');
+        changeLanguage(currentLang);
 
         window.addEventListener('scroll', updateHeaderScroll);
-
-        // Animation de texte (Typewriter effect)
-        const textElement = document.getElementById('typing-text');
-        const words = ["LessGooo", "le DevOps", "le Cloud", "l'Infrastructure"];
-        let wordIndex = 0;
-        let charIndex = 0;
-        let isDeleting = false;
-
-        function typeEffect() {
-            const currentWord = words[wordIndex];
-            
-            if (isDeleting) {
-                textElement.textContent = currentWord.substring(0, charIndex - 1);
-                charIndex--;
-            } else {
-                textElement.textContent = currentWord.substring(0, charIndex + 1);
-                charIndex++;
-            }
-
-            let typeSpeed = isDeleting ? 100 : 200;
-
-            if (!isDeleting && charIndex === currentWord.length) {
-                isDeleting = true;
-                typeSpeed = 2000; // Pause à la fin du mot
-            } else if (isDeleting && charIndex === 0) {
-                isDeleting = false;
-                wordIndex = (wordIndex + 1) % words.length;
-                typeSpeed = 500;
-            }
-
-            setTimeout(typeEffect, typeSpeed);
-        }
-
-        // Démarrage au chargement de la page
-        document.addEventListener('DOMContentLoaded', typeEffect);
+        
+        // Lancement de l'animation
+        typeEffect();
     </script>
 </body>
 </html>
