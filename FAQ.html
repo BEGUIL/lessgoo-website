@@ -290,7 +290,7 @@
 
         /* FAQ Specific Styles */
         .faq-hero {
-            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('tr.jpg'); background-size: cover; background-position: center; padding: 100px 5%; color: #fff; text-align: center;
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('images/tr.jpg'); background-size: cover; background-position: center; padding: 100px 5%; color: #fff; text-align: center;
         }
         .faq-grid { 
             display: grid; 
@@ -338,7 +338,7 @@
         <input type="checkbox" id="check">
         <nav class="nav-container">
             <div class="logo">
-                <a href="index.html"><img id="logo-img" src="logo2.png" alt="Logo"></a>
+                <a href="index.html"><img id="logo-img" src="images/logo2.png" alt="Logo"></a>
             </div>
 
             <label for="check" class="menu-toggle">
@@ -647,7 +647,7 @@
         
         function setTheme(isDark) {
             body.classList.toggle('dark-theme', isDark);
-            logoImg.src = isDark ? 'logo1.jpg' : 'logo2.png';
+            logoImg.src = isDark ? 'images/logo1.jpg' : 'images/logo2.png';
             themeIcon.className = isDark ? 'fas fa-sun' : 'fas fa-moon';
             localStorage.setItem('theme', isDark ? 'dark' : 'light');
             updateHeaderScroll();
