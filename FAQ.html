@@ -1,0 +1,758 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LessGooo | FAQ</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-color: #007bb5; /* Bleu-cyan plus profond pour le contraste sur blanc */
+            --primary-hover: #0088cc;
+            --text-color: #1a1a1a;
+            --header-bg: #ffffff;
+            --top-bar-bg: #f1f3f5; /* Gris clair pour détacher la barre du header blanc */
+            --top-bar-text: #1a1a1a; /* Texte plus contrasté */
+            --dropdown-bg: #ffffff;
+            --header-scroll-bg: rgba(255, 255, 255, 0.95);
+            --text-muted: #4c4c4c;
+            --transition: all 0.3s ease;
+        }
+
+        body.dark-theme {
+            --primary-color: #00aeef; /* Cyan vif sur fond noir */
+            --bg-color: #0f0f0f;
+            --text-color: #ffffff;
+            --header-bg: #0a0a0a;
+            --top-bar-bg: #000000;
+            --top-bar-text: #ffffff;
+            --dropdown-bg: #1a1a1a;
+            --header-scroll-bg: rgba(10, 10, 10, 0.95);
+            --text-muted: #aaa;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.6;
+            overflow-x: hidden;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        /* --- TOP BAR --- */
+        .top-bar {
+            background: var(--top-bar-bg);
+            color: var(--top-bar-text);
+            padding: 10px 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 0.85rem;
+            margin-bottom: 15px;
+        }
+
+        .top-bar .contact-info span {
+            margin-right: 20px;
+        }
+
+        .top-bar i {
+            color: var(--primary-color);
+            margin-right: 8px;
+        }
+
+        .top-bar-right {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .language-switcher {
+            font-weight: 600;
+            cursor: pointer;
+            font-size: 0.8rem;
+        }
+
+        .lang-btn { transition: var(--transition); opacity: 0.5; }
+        .lang-btn.active { opacity: 1; color: var(--primary-color); }
+        .lang-btn:hover { opacity: 1; }
+        .lang-separator { margin: 0 5px; opacity: 0.3; }
+
+        .social-links i {
+            margin-left: 15px;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+        .social-links i:hover { color: var(--primary-hover); }
+
+        /* --- HEADER & NAVIGATION --- */
+        .main-header {
+            background: var(--header-bg);
+            backdrop-filter: blur(12px);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            position: sticky;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            transition: var(--transition);
+            border-bottom: 1px solid rgba(0,0,0,0.05);
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 5%;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .logo img {
+            height: 65px;
+            width: auto;
+            object-fit: contain;
+            display: block;
+            transition: opacity 0.3s ease;
+        }
+
+        .nav-menu {
+            list-style: none;
+            display: flex;
+            gap: 30px;
+            align-items: center;
+        }
+
+        .nav-item { position: relative; }
+        .nav-item i { font-size: 0.7rem; margin-left: 5px; opacity: 0.7; }
+
+        .nav-link {
+            text-decoration: none;
+            color: var(--text-color);
+            font-weight: 500;
+            font-size: 0.95rem;
+            text-transform: uppercase;
+            transition: var(--transition);
+        }
+
+        .nav-link:hover { color: var(--primary-color); }
+
+        /* --- DROPDOWN --- */
+        .dropdown-content {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background: var(--dropdown-bg);
+            min-width: 220px;
+            box-shadow: 0 8px 15px rgba(0,0,0,0.1);
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(10px);
+            transition: var(--transition);
+            list-style: none;
+            padding: 10px 0;
+            border-top: 3px solid var(--primary-color);
+        }
+
+        .nav-item:hover .dropdown-content {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+
+        .dropdown-content a {
+            padding: 12px 20px;
+            display: block;
+            text-decoration: none;
+            color: var(--text-color);
+            font-size: 0.9rem;
+            transition: var(--transition);
+        }
+
+        .dropdown-content a:hover {
+            background: rgba(0, 174, 239, 0.1);
+            color: var(--primary-color);
+            padding-left: 25px;
+        }
+
+        /* --- CTA BUTTON --- */
+        .btn-enroll {
+            background: var(--primary-color);
+            color: #ffffff;
+            padding: 12px 25px;
+            border-radius: 5px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: var(--transition);
+            border: 2px solid var(--primary-color);
+        }
+
+        .btn-enroll:hover {
+            background: transparent;
+            color: var(--primary-color);
+        }
+
+        /* --- THEME TOGGLE --- */
+        .theme-toggle {
+            cursor: pointer;
+            margin-left: 20px;
+            display: flex;
+            align-items: center;
+            transition: var(--transition);
+        }
+        .theme-toggle:hover { color: var(--primary-color); }
+
+        /* --- BURGER MOBILE --- */
+        .menu-toggle {
+            display: none;
+            color: var(--text-color);
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        #check { display: none; }
+
+        /* --- RESPONSIVE ADJUSTMENTS --- */
+        .mobile-lang-switcher {
+            display: none;
+        }
+
+        @media (max-width: 1024px) {
+            .nav-menu { gap: 15px; }
+            .nav-link { font-size: 0.85rem; }
+        }
+
+        @media (max-width: 991px) {
+            .top-bar { display: none; }
+            .menu-toggle { display: block; }
+            .logo img { height: 55px; }
+            
+            .nav-menu {
+                position: fixed;
+                top: 70px;
+                left: -100%;
+                flex-direction: column;
+                background: var(--bg-color);
+                width: 100%;
+                height: calc(100vh - 70px);
+                text-align: center;
+                transition: all 0.4s ease-in-out;
+                padding-top: 40px;
+                overflow-y: auto;
+            }
+
+            #check:checked ~ .nav-container .nav-menu { left: 0; }
+            .theme-toggle { margin: 20px 0; justify-content: center; }
+            
+            .nav-menu li { 
+                width: 100%; 
+                margin: 10px 0;
+            }
+
+            .nav-link {
+                font-size: 1.2rem;
+                padding: 10px;
+                display: block;
+            }
+
+            .dropdown-content { position: static; opacity: 1; visibility: visible; box-shadow: none; transform: none; display: none; }
+            .nav-item:hover .dropdown-content { display: block; }
+
+            .btn-enroll {
+                display: inline-block;
+                margin-top: 20px;
+                width: 80%;
+            }
+
+            .mobile-lang-switcher {
+                display: block;
+                margin: 20px 0;
+                padding-top: 15px;
+                border-top: 1px solid rgba(128, 128, 128, 0.2);
+            }
+            .mobile-lang-switcher .language-switcher {
+                display: flex;
+                justify-content: center;
+                gap: 15px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .logo img { height: 45px; }
+        }
+
+        /* FAQ Specific Styles */
+        .faq-hero {
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('images/tr.jpg'); background-size: cover; background-position: center; padding: 100px 5%; color: #fff; text-align: center;
+        }
+
+        .faq-grid { 
+            display: grid; 
+            grid-template-columns: repeat(2, 1fr); 
+            gap: 25px; 
+            max-width: 1200px; 
+            margin: 50px auto; 
+            padding: 0 5%; 
+        }
+        .faq-item { background: var(--top-bar-bg); margin-bottom: 15px; border-radius: 8px; overflow: hidden; border: 1px solid transparent; transition: var(--transition); }
+        .faq-item:hover { border-color: var(--primary-color); }
+        .faq-question { padding: 20px; cursor: pointer; display: flex; justify-content: space-between; align-items: center; font-weight: 600; gap: 15px; }
+        .faq-question i { transition: var(--transition); color: var(--primary-color); flex-shrink: 0; }
+        .faq-answer { padding: 0 20px; max-height: 0; overflow: hidden; transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1); color: var(--text-muted); line-height: 1.6; }
+        
+        .faq-item.faq-open { background: var(--header-bg); border-color: var(--primary-color); box-shadow: 0 10px 20px rgba(0,0,0,0.05); }
+        .faq-item.faq-open .faq-question { color: var(--primary-color); }
+        .faq-item.faq-open .faq-answer { padding: 0 20px 20px; max-height: 1000px; }
+        .faq-item.faq-open .faq-question i { transform: rotate(180deg); }
+
+        /* --- FAQ RESPONSIVE --- */
+        @media (max-width: 1100px) {
+            .faq-grid { grid-template-columns: 1fr; gap: 10px; margin: 20px auto; }
+            .faq-hero h1 { font-size: 2.2rem; }
+            .faq-hero { padding: 60px 5%; }
+        }
+
+        /* --- ANIMATIONS DE REVELATION --- */
+        .reveal {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.6s ease-out;
+        }
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* --- WHATSAPP BUTTON --- */
+        .whatsapp-btn {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background-color: #25d366;
+            color: white;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 35px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+            z-index: 2000;
+            text-decoration: none;
+            transition: var(--transition);
+            animation: pulse-whatsapp 2s infinite;
+        }
+        .whatsapp-btn:hover { transform: scale(1.1); color: white; }
+        @keyframes pulse-whatsapp {
+            0% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7); }
+            70% { box-shadow: 0 0 0 20px rgba(37, 211, 102, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); }
+        }
+    </style>
+</head>
+<body>
+    <div class="top-bar">
+        <div class="contact-info">
+            <span><i class="fas fa-envelope"></i> info@lessgooo.com</span>
+            <span><i class="fas fa-phone"></i> +237 656 84 48 82</span>
+            <span><i class="fas fa-phone"></i> +237 675 62 72 71</span>
+        </div>
+        <div class="top-bar-right">
+            <div class="language-switcher">
+                <span class="lang-btn active" onclick="changeLanguage('fr')">FR</span>
+                <span class="lang-separator">|</span>
+                <span class="lang-btn" onclick="changeLanguage('en')">EN</span>
+            </div>
+            <div class="social-links">
+                <i class="fab fa-facebook"></i>
+                <i class="fab fa-tiktok"></i>
+                <i class="fab fa-youtube"></i>
+            </div>
+        </div>
+    </div>
+
+    <header class="main-header">
+        <input type="checkbox" id="check">
+        <nav class="nav-container">
+            <div class="logo">
+                <a href="index.html"><img id="logo-img" src="images/logo2.png" alt="Logo"></a>
+            </div>
+
+            <label for="check" class="menu-toggle">
+                <i class="fas fa-bars"></i>
+            </label>
+
+            <ul class="nav-menu">
+                <li class="nav-item"><a href="index.html" class="nav-link" data-i18n="nav_home">Accueil</a></li>
+                <li class="nav-item">
+                    <a href="#" class="nav-link"><span data-i18n="nav_courses">Formations</span> <i class="fas fa-chevron-down" style="font-size: 0.7rem;"></i></a>
+                    <ul class="dropdown-content">
+                        <li><a href="#">DevOps Foundation</a></li>
+                        <li><a href="#">AWS Cloud Solutions</a></li>
+                        <li><a href="#">Kubernetes Expert</a></li>
+                        <li><a href="#">CI/CD Pipelines</a></li>
+                    </ul>
+                </li>
+                <li class="nav-item"><a href="#" class="nav-link" data-i18n="nav_infra">Infrastructure</a></li>
+                <li class="nav-item"><a href="#" class="nav-link" data-i18n="nav_blog">Blog</a></li>
+                <li class="nav-item"><a href="FAQ.html" class="nav-link" data-i18n="nav_faq">FAQ</a></li>
+                <li class="nav-item"><a href="#" class="nav-link" data-i18n="nav_contact">Contact</a></li>
+                <li><a href="#" class="btn-enroll" data-i18n="btn_enroll">S'inscrire</a></li>
+                <li class="theme-toggle" id="theme-btn"><i class="fas fa-moon"></i></li>
+                <li class="mobile-lang-switcher">
+                    <div class="language-switcher">
+                        <span class="lang-btn active" onclick="changeLanguage('fr')">FR</span>
+                        <span class="lang-separator">|</span>
+                        <span class="lang-btn" onclick="changeLanguage('en')">EN</span>
+                    </div>
+                </li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="faq-hero">
+        <h1 class="reveal" data-i18n="faq_title">Foire Aux Questions</h1>
+        <p class="reveal" data-i18n="faq_subtitle">Tout ce que vous devez savoir sur nos formations DevOps</p>
+    </section>
+
+    <div class="faq-grid">
+        <div class="faq-column">
+            <div class="faq-item reveal">
+                <div class="faq-question"><span data-i18n="faq_q1">...</span> <i class="fas fa-plus"></i></div>
+                <div class="faq-answer" data-i18n="faq_a1">...</div>
+            </div>
+            <div class="faq-item reveal">
+                <div class="faq-question"><span data-i18n="faq_q2">...</span> <i class="fas fa-plus"></i></div>
+                <div class="faq-answer" data-i18n="faq_a2">...</div>
+            </div>
+            <div class="faq-item reveal">
+                <div class="faq-question"><span data-i18n="faq_q3">...</span> <i class="fas fa-plus"></i></div>
+                <div class="faq-answer" data-i18n="faq_a3">...</div>
+            </div>
+            <div class="faq-item reveal">
+                <div class="faq-question"><span data-i18n="faq_q4">...</span> <i class="fas fa-plus"></i></div>
+                <div class="faq-answer" data-i18n="faq_a4">...</div>
+            </div>
+            <div class="faq-item reveal">
+                <div class="faq-question"><span data-i18n="faq_q5">...</span> <i class="fas fa-plus"></i></div>
+                <div class="faq-answer" data-i18n="faq_a5">...</div>
+            </div>
+            <div class="faq-item reveal">
+                <div class="faq-question"><span data-i18n="faq_q6">...</span> <i class="fas fa-plus"></i></div>
+                <div class="faq-answer" data-i18n="faq_a6">...</div>
+            </div>
+            <div class="faq-item reveal">
+                <div class="faq-question"><span data-i18n="faq_q7">...</span> <i class="fas fa-plus"></i></div>
+                <div class="faq-answer" data-i18n="faq_a7">...</div>
+            </div>
+            <div class="faq-item reveal">
+                <div class="faq-question"><span data-i18n="faq_q8">...</span> <i class="fas fa-plus"></i></div>
+                <div class="faq-answer" data-i18n="faq_a8">...</div>
+            </div>
+            <div class="faq-item reveal">
+                <div class="faq-question"><span data-i18n="faq_q9">...</span> <i class="fas fa-plus"></i></div>
+                <div class="faq-answer" data-i18n="faq_a9">...</div>
+            </div>
+            <div class="faq-item reveal">
+                <div class="faq-question"><span data-i18n="faq_q10">...</span> <i class="fas fa-plus"></i></div>
+                <div class="faq-answer" data-i18n="faq_a10">...</div>
+            </div>
+            <div class="faq-item reveal">
+                <div class="faq-question"><span data-i18n="faq_q11">...</span> <i class="fas fa-plus"></i></div>
+                <div class="faq-answer" data-i18n="faq_a11">...</div>
+            </div>
+            <div class="faq-item reveal">
+                <div class="faq-question"><span data-i18n="faq_q12">...</span> <i class="fas fa-plus"></i></div>
+                <div class="faq-answer" data-i18n="faq_a12">...</div>
+            </div>
+            <div class="faq-item reveal">
+                <div class="faq-question"><span data-i18n="faq_q13">...</span> <i class="fas fa-plus"></i></div>
+                <div class="faq-answer" data-i18n="faq_a13">...</div>
+            </div>
+            <div class="faq-item reveal">
+                <div class="faq-question"><span data-i18n="faq_q14">...</span> <i class="fas fa-plus"></i></div>
+                <div class="faq-answer" data-i18n="faq_a14">...</div>
+            </div>
+            <div class="faq-item reveal">
+                <div class="faq-question"><span data-i18n="faq_q15">...</span> <i class="fas fa-plus"></i></div>
+                <div class="faq-answer" data-i18n="faq_a15">...</div>
+            </div>
+            <div class="faq-item reveal">
+                <div class="faq-question"><span data-i18n="faq_q16">...</span> <i class="fas fa-plus"></i></div>
+                <div class="faq-answer" data-i18n="faq_a16">...</div>
+            </div>
+            <div class="faq-item reveal">
+                <div class="faq-question"><span data-i18n="faq_q17">...</span> <i class="fas fa-plus"></i></div>
+                <div class="faq-answer" data-i18n="faq_a17">...</div>
+            </div>
+            <div class="faq-item reveal">
+                <div class="faq-question"><span data-i18n="faq_q18">...</span> <i class="fas fa-plus"></i></div>
+                <div class="faq-answer" data-i18n="faq_a18">...</div>
+            </div>
+            <div class="faq-item reveal">
+                <div class="faq-question"><span data-i18n="faq_q19">...</span> <i class="fas fa-plus"></i></div>
+                <div class="faq-answer" data-i18n="faq_a19">...</div>
+            </div>
+        </div>
+        <div class="faq-column">
+            <div class="faq-item reveal">
+                <div class="faq-question"><span data-i18n="faq_q20">...</span> <i class="fas fa-plus"></i></div>
+                <div class="faq-answer" data-i18n="faq_a20">...</div>
+            </div>
+            <div class="faq-item reveal">
+                <div class="faq-question"><span data-i18n="faq_q21">...</span> <i class="fas fa-plus"></i></div>
+                <div class="faq-answer" data-i18n="faq_a21">...</div>
+            </div>
+            <div class="faq-item reveal">
+                <div class="faq-question"><span data-i18n="faq_q22">...</span> <i class="fas fa-plus"></i></div>
+                <div class="faq-answer" data-i18n="faq_a22">...</div>
+            </div>
+            <div class="faq-item reveal">
+                <div class="faq-question"><span data-i18n="faq_q23">...</span> <i class="fas fa-plus"></i></div>
+                <div class="faq-answer" data-i18n="faq_a23">...</div>
+            </div>
+            <div class="faq-item reveal">
+                <div class="faq-question"><span data-i18n="faq_q24">...</span> <i class="fas fa-plus"></i></div>
+                <div class="faq-answer" data-i18n="faq_a24">...</div>
+            </div>
+            <div class="faq-item reveal">
+                <div class="faq-question"><span data-i18n="faq_q25">...</span> <i class="fas fa-plus"></i></div>
+                <div class="faq-answer" data-i18n="faq_a25">...</div>
+            </div>
+            <div class="faq-item reveal">
+                <div class="faq-question"><span data-i18n="faq_q26">...</span> <i class="fas fa-plus"></i></div>
+                <div class="faq-answer" data-i18n="faq_a26">...</div>
+            </div>
+            <div class="faq-item reveal">
+                <div class="faq-question"><span data-i18n="faq_q27">...</span> <i class="fas fa-plus"></i></div>
+                <div class="faq-answer" data-i18n="faq_a27">...</div>
+            </div>
+            <div class="faq-item reveal">
+                <div class="faq-question"><span data-i18n="faq_q28">...</span> <i class="fas fa-plus"></i></div>
+                <div class="faq-answer" data-i18n="faq_a28">...</div>
+            </div>
+            <div class="faq-item reveal">
+                <div class="faq-question"><span data-i18n="faq_q29">...</span> <i class="fas fa-plus"></i></div>
+                <div class="faq-answer" data-i18n="faq_a29">...</div>
+            </div>
+            <div class="faq-item reveal">
+                <div class="faq-question"><span data-i18n="faq_q30">...</span> <i class="fas fa-plus"></i></div>
+                <div class="faq-answer" data-i18n="faq_a30">...</div>
+            </div>
+            <div class="faq-item reveal">
+                <div class="faq-question"><span data-i18n="faq_q31">...</span> <i class="fas fa-plus"></i></div>
+                <div class="faq-answer" data-i18n="faq_a31">...</div>
+            </div>
+            <div class="faq-item reveal">
+                <div class="faq-question"><span data-i18n="faq_q32">...</span> <i class="fas fa-plus"></i></div>
+                <div class="faq-answer" data-i18n="faq_a32">...</div>
+            </div>
+            <div class="faq-item reveal">
+                <div class="faq-question"><span data-i18n="faq_q33">...</span> <i class="fas fa-plus"></i></div>
+                <div class="faq-answer" data-i18n="faq_a33">...</div>
+            </div>
+            <div class="faq-item reveal">
+                <div class="faq-question"><span data-i18n="faq_q34">...</span> <i class="fas fa-plus"></i></div>
+                <div class="faq-answer" data-i18n="faq_a34">...</div>
+            </div>
+            <div class="faq-item reveal">
+                <div class="faq-question"><span data-i18n="faq_q35">...</span> <i class="fas fa-plus"></i></div>
+                <div class="faq-answer" data-i18n="faq_a35">...</div>
+            </div>
+            <div class="faq-item reveal">
+                <div class="faq-question"><span data-i18n="faq_q36">...</span> <i class="fas fa-plus"></i></div>
+                <div class="faq-answer" data-i18n="faq_a36">...</div>
+            </div>
+            <div class="faq-item reveal">
+                <div class="faq-question"><span data-i18n="faq_q37">...</span> <i class="fas fa-plus"></i></div>
+                <div class="faq-answer" data-i18n="faq_a37">...</div>
+            </div>
+            <div class="faq-item reveal">
+                <div class="faq-question"><span data-i18n="faq_q38">...</span> <i class="fas fa-plus"></i></div>
+                <div class="faq-answer" data-i18n="faq_a38">...</div>
+            </div>
+        </div>
+    </div>
+
+    <a href="https://wa.me/237656844882" class="whatsapp-btn" target="_blank" title="Contactez-nous sur WhatsApp">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <script>
+        const translations = {
+            fr: {
+                nav_home: "Accueil",
+                nav_courses: "Formations",
+                nav_infra: "Infrastructure",
+                nav_blog: "Blog",
+                nav_faq: "FAQ",
+                nav_contact: "Contact",
+                btn_enroll: "S'inscrire",
+                faq_title: "Foire Aux Questions",
+                faq_subtitle: "Tout ce que vous devez savoir sur nos formations DevOps",
+                faq_q1: "Des connaissances informatiques préalables sont-elles nécessaires ?", faq_a1: "L'inscription ne nécessite aucune connaissance préalable. L'accent est mis sur un environnement adapté à tous les niveaux. La passion et l'engagement sont les seuls prérequis.",
+                faq_q2: "Quelle est la durée du programme de formation ?", faq_a2: "Le programme dure 7 mois. Nous offrons la flexibilité de prolonger gratuitement si vous avez besoin de plus de temps pour assimiler les concepts.",
+                faq_q3: "Quel est le processus d'enrôlement ?", faq_a3: "L'inscription est simple et sans engagement initial. Nous offrons un mois d'essai gratuit avec accès complet avant tout paiement.",
+                faq_q4: "Le programme inclut-il une certification ?", faq_a4: "Oui, vous recevez un certificat à la fin. Nous vous préparons aussi aux certifications AWS, Kubernetes et Terraform pour booster votre profil.",
+                faq_q5: "Soutien après l'obtention d'un emploi ?", faq_a5: "Absolument. Nous avons un groupe de soutien dédié pour aider nos diplômés en poste à résoudre les défis techniques réels en entreprise.",
+                faq_q6: "Accès à des projets pratiques réels ?", faq_a6: "Oui, le programme intègre des laboratoires et des scénarios industriels réels pour maîtriser Docker, Kubernetes et plus encore.",
+                faq_q7: "Besoin d'un ordinateur puissant ?", faq_a7: "Non, un ordinateur standard avec internet suffit. Nous fournissons toute l'infrastructure cloud nécessaire via nos propres serveurs.",
+                faq_q8: "Ressources hors cours ?", faq_a8: "Forums, documentation complète, sessions de rattrapage et entretiens individuels avec les instructeurs sont disponibles.",
+                faq_q9: "Accès aux supports après la formation ?", faq_a9: "Oui, vous gardez l'accès aux ressources et pouvez même rejoindre de futures sessions pour rester à jour techniquement.",
+                faq_q10: "Aide pour le profil LinkedIn ?", faq_a10: "Oui, nous offrons un accompagnement dédié pour optimiser votre profil LinkedIn et votre CV selon les standards du marché.",
+                faq_q11: "Matériel préparatoire ?", faq_a11: "Nous fournissons des pré-évaluations et des vidéos préparatoires sur tous les sujets pour vous aider avant chaque session.",
+                faq_q12: "Compétences clés acquises ?", faq_a12: "Maîtrise de Linux, Cloud Computing, CI/CD, Infrastructure as Code et gestion de plateformes Cloud.",
+                faq_q13: "Veille technologique ?", faq_a13: "Nous collaborons avec des experts et révisons régulièrement le curriculum pour intégrer les dernières tendances du marché.",
+                faq_q14: "Profils non-techniques ?", faq_a14: "Tout à fait. Nous partons des bases fondamentales pour construire progressivement votre expertise technique.",
+                faq_q15: "Différents styles d'apprentissage ?", faq_a15: "Nous utilisons un mélange de cours, labs pratiques et sessions interactives pour s'adapter à chaque rythme.",
+                faq_q16: "Limite d'âge ?", faq_a16: "Aucune. Nous accueillons toute personne désireuse d'apprendre, quel que soit son âge.",
+                faq_q17: "Opportunités de réseautage ?", faq_a17: "Oui, via nos événements, nos conférenciers invités et notre communauté active d'alumni à travers le monde.",
+                faq_q18: "Suivi des progrès ?", faq_a18: "Par des évaluations régulières, des soumissions de projets et un suivi de votre participation aux exercices pratiques.",
+                faq_q19: "Fréquence des mises à jour ?", faq_a19: "Le curriculum est revu tous les quelques mois pour refléter l'évolution rapide du DevOps et du Cloud.",
+                faq_q20: "Compétences pratiques ?", faq_a20: "Le programme simule des environnements de travail réels pour garantir que vos compétences sont directement applicables.",
+                faq_q21: "Ratio instructeur/étudiant ?", faq_a21: "Nous maintenons un ratio favorable pour garantir une attention personnalisée et un apprentissage efficace.",
+                faq_q22: "Mentorat de carrière ?", faq_a22: "Oui, nous aidons à la rédaction de CV, à la préparation des entretiens et au développement professionnel continu.",
+                faq_q23: "Possibilité de spécialisation ?", faq_a23: "Oui, via des modules optionnels et des projets spécifiques selon vos intérêts techniques.",
+                faq_q24: "Mécanismes de qualité ?", faq_a24: "Sessions de feedback régulières, formation continue des instructeurs et révisions basées sur les besoins de l'industrie.",
+                faq_q25: "Étudiants internationaux ?", faq_a25: "Bienvenue. Nous adaptons nos horaires pour les différents fuseaux horaires et développons des supports multilingues.",
+                faq_q26: "Prise en compte du feedback ?", faq_a26: "Essentiel. Nous utilisons vos retours via sondages et discussions pour améliorer constamment le programme.",
+                faq_q27: "Histoires de réussite ?", faq_a27: "Nombreux diplômés en poste dans des entreprises internationales de renom après notre formation.",
+                faq_q28: "Réussite spécifique en Afrique ?", faq_a28: "Plusieurs succès notables de participants africains occupant aujourd'hui des rôles clés dans le secteur IT global.",
+                faq_q29: "Défis en Afrique (Connectivité) ?", faq_a29: "Nous proposons des supports téléchargeables et des horaires flexibles pour pallier les problèmes de connexion.",
+                faq_q30: "Collaborations locales en Afrique ?", faq_a30: "Oui, nous travaillons avec des organisations locales pour adapter le contenu au contexte africain.",
+                faq_q31: "Supports multilingues en Afrique ?", faq_a31: "Principalement en anglais actuellement, avec des ressources en français et autres langues en cours de développement.",
+                faq_q32: "Barrières à l'emploi en Afrique ?", faq_a32: "Support carrière sur mesure pour aider à naviguer sur le marché local et international.",
+                faq_q33: "Anciens élèves entrepreneurs (Afrique) ?", faq_a33: "Plusieurs de nos alumni africains ont lancé avec succès leurs propres startups technologiques.",
+                faq_q34: "Accessibilité financière (Afrique) ?", faq_a34: "Options d'aide financière, bourses et plans de paiement flexibles adaptés aux réalités économiques.",
+                faq_q35: "Réseautage pour Africains ?", faq_a35: "Meetups virtuels, webinaires et accès direct à notre réseau mondial d'alumni.",
+                faq_q36: "Visibilité mondiale ?", faq_a36: "Promotion active de vos projets et succès sur nos plateformes internationales.",
+                faq_q37: "Support post-formation Afrique ?", faq_a37: "Conseil carrière continu et accès à un portail d'emploi dédié au marché africain.",
+                faq_q38: "Adaptation au paysage africain ?", faq_a38: "Curriculum intégrant des études de cas et experts du secteur technologique africain."
+            },
+            en: {
+                nav_home: "Home",
+                nav_courses: "Courses",
+                nav_infra: "Infrastructure",
+                nav_blog: "Blog",
+                nav_faq: "FAQ",
+                nav_contact: "Contact",
+                btn_enroll: "Enroll Now",
+                faq_title: "Frequently Asked Questions",
+                faq_subtitle: "Everything you need to know about our DevOps training",
+                faq_q1: "Is prior computer knowledge necessary?", faq_a1: "Enrollment does not necessitate any prior computer knowledge. Passion and commitment are the primary prerequisites.",
+                faq_q2: "How long is the training program?", faq_a2: "Our program spans 7 months. We offer free program extensions if you need extra time to enhance your understanding.",
+                faq_q3: "What is the enrollment process?", faq_a3: "Enrollment is commitment-free. We offer a one-month trial period with unrestricted access before any financial commitment.",
+                faq_q4: "Does the program include a certification?", faq_a4: "Yes, participants are awarded a certification. We also guide you through industry certifications like AWS or Kubernetes.",
+                faq_q5: "Do you offer support after securing a job?", faq_a5: "Yes, we have a dedicated alumni support group where graduates can share experiences and solve technical challenges together.",
+                faq_q6: "Will I have access to hands-on projects?", faq_a6: "Certainly. Our training emphasizes practical application through real-world scenarios and industrial projects.",
+                faq_q7: "Do I need a powerful computer?", faq_a7: "No, a basic computer with internet is enough. We provide the entire cloud infrastructure required for the course.",
+                faq_q8: "Support outside of class?", faq_a8: "Access to online forums, documentation, support channels, catch-up sessions, and one-on-one sessions with instructors.",
+                faq_q9: "Access after completion?", faq_a9: "Absolutely. You retain access to resources and can even join future class sessions to further enrich your knowledge.",
+                faq_q10: "LinkedIn profile assistance?", faq_a10: "Yes, we provide dedicated guidance for creating a compelling LinkedIn profile and an industry-standard CV.",
+                faq_q11: "Preparatory materials?", faq_a11: "We provide pre-assessments and preparatory materials, including pre-videos on all topics, to help you prepare.",
+                faq_q12: "Key skills gained?", faq_a12: "Proficiency in DevOps practices, Cloud computing architectures, and Linux system administration.",
+                faq_q13: "Staying current with industry?", faq_a13: "We continuously collaborate with industry experts and conduct regular curriculum reviews.",
+                faq_q14: "Non-technical backgrounds succeed?", faq_a14: "Absolutely. We start with the basics and progressively build up to advanced technical expertise.",
+                faq_q15: "Learning speeds/styles?", faq_a15: "We offer a blend of methods including lectures, hands-on labs, and self-paced materials.",
+                faq_q16: "Age limit?", faq_a16: "There is no strict age limit. We welcome participants of all ages eager to learn.",
+                faq_q17: "Networking opportunities?", faq_a17: "Yes, including networking events, guest lectures, and an active online community.",
+                faq_q18: "Progress monitoring?", faq_a18: "Evaluated through regular assessments, project submissions, and practical exercises.",
+                faq_q19: "Update frequency?", faq_a19: "The curriculum is updated every few months to reflect the latest technological advancements.",
+                faq_q20: "Practical skills integrated?", faq_a20: "Hands-on labs and real-world projects simulate actual work environments for job readiness.",
+                faq_q21: "Instructor-to-student ratio?", faq_a21: "Favorable ratio to ensure personalized attention and tailored guidance for every student.",
+                faq_q22: "Career counseling/mentorship?", faq_a22: "Yes, providing guidance on career paths, resume building, and interview preparation.",
+                faq_q23: "Choice to specialize?", faq_a23: "Opportunity to delve deeper into specific areas via elective modules or special projects.",
+                faq_q24: "Quality mechanisms?", faq_a24: "Feedback sessions, continuous instructor training, and industry-based curriculum revisions.",
+                faq_q25: "International students?", faq_a25: "Welcome. We offer classes at varying times and are developing multilingual materials.",
+                faq_q26: "Feedback incorporation?", faq_a26: "Feedback is collected via surveys and sessions to continuously improve the program.",
+                faq_q27: "Employment success stories?", faq_a27: "Numerous graduates have built successful careers in prominent companies worldwide.",
+                faq_q28: "African participant success?", faq_a28: "Many African participants have secured prominent roles in the global tech sector.",
+                faq_q29: "African challenges (internet)?", faq_a29: "Downloadable materials for offline study and flexible class hours to accommodate connectivity.",
+                faq_q30: "Collaborations in Africa?", faq_a30: "Partnerships with local organizations help tailor content to the African context.",
+                faq_q31: "Multiple languages (Africa)?", faq_a31: "Currently in English, with multilingual resources for the continent in development.",
+                faq_q32: "Overcoming barriers (Africa)?", faq_a32: "Comprehensive career support tailored specifically to the needs of African participants.",
+                faq_q33: "Tech businesses (Africa)?", faq_a33: "African alumni have successfully started their own tech businesses and startups.",
+                faq_q34: "Affordability (Africa)?", faq_a34: "Financial assistance, scholarships, and flexible payment plans are available.",
+                faq_q35: "Networking (Africa)?", faq_a35: "Virtual meetups and connections with our global alumni network for African participants.",
+                faq_q36: "Visibility (Africa)?", faq_a36: "Actively promote achievements of African participants within the global tech community.",
+                faq_q37: "Post-training support (Africa)?", faq_a37: "Tailored career counseling and a job portal relevant to African market dynamics.",
+                faq_q38: "Landscape adaptation (Africa)?", faq_a38: "Reflecting unique technological landscapes and market needs through local case studies."
+            }
+        };
+
+        // Theme Management
+        const themeBtn = document.getElementById('theme-btn');
+        const body = document.body;
+        const logoImg = document.getElementById('logo-img');
+        const themeIcon = themeBtn.querySelector('i');
+        
+        function setTheme(isDark) {
+            body.classList.toggle('dark-theme', isDark);
+            logoImg.src = isDark ? 'images/logo1.jpg' : 'images/logo2.png';
+            themeIcon.className = isDark ? 'fas fa-sun' : 'fas fa-moon';
+            localStorage.setItem('theme', isDark ? 'dark' : 'light');
+            updateHeaderScroll();
+        }
+
+        themeBtn.addEventListener('click', () => setTheme(!body.classList.contains('dark-theme')));
+
+        // Language Management
+        function changeLanguage(lang) {
+            localStorage.setItem('lang', lang);
+            document.querySelectorAll('[data-i18n]').forEach(el => {
+                const key = el.getAttribute('data-i18n');
+                if (translations[lang] && translations[lang][key]) el.textContent = translations[lang][key];
+            });
+            document.querySelectorAll('.lang-btn').forEach(btn => {
+                btn.classList.toggle('active', btn.textContent.toLowerCase() === lang);
+            });
+        }
+
+        // Header Scroll Effect
+        function updateHeaderScroll() {
+            const header = document.querySelector('.main-header');
+            if (window.scrollY > 50) {
+                header.style.padding = '5px 0';
+                header.style.background = 'var(--header-scroll-bg)';
+            } else {
+                header.style.padding = '10px 0';
+                header.style.background = 'var(--header-bg)';
+            }
+        }
+        window.addEventListener('scroll', updateHeaderScroll);
+
+        // Accordion Logic
+        document.querySelectorAll('.faq-question').forEach(q => {
+            q.addEventListener('click', () => {
+                const item = q.parentElement;
+                const isOpen = item.classList.contains('faq-open');
+                document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('faq-open'));
+                if (!isOpen) item.classList.add('faq-open');
+            });
+        });
+
+        // Init
+        const savedTheme = localStorage.getItem('theme') || 'light';
+        setTheme(savedTheme === 'dark');
+        changeLanguage(localStorage.getItem('lang') || 'fr');
+
+        // --- SYSTEME DE REVELATION AU SCROLL ---
+        const revealObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                }
+            });
+        }, { threshold: 0.1 });
+
+        document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+    </script>
+</body>
+</html>
