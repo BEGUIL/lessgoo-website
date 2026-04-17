@@ -301,6 +301,11 @@
         }
         @keyframes blink { 50% { border-color: transparent; } }
 
+        /* Style pour le lien de la page active */
+        .nav-link.active-page {
+            color: var(--primary-color) !important;
+            font-weight: 700;
+        }
         /* --- HERO SECTION (Background Image) --- */
         .hero-section {
             background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('images/ep6.jpg');
@@ -686,7 +691,9 @@
         <input type="checkbox" id="check">
         <nav class="nav-container">
             <div class="logo">
-                <img id="logo-img" src="images/logo2.png" alt="LessGooo Logo">
+                <a href="index.html">
+                    <img id="logo-img" src="images/logo2.png" alt="LessGooo Logo">
+                </a>
             </div>
 
             <label for="check" class="menu-toggle">
@@ -694,7 +701,7 @@
             </label>
 
             <ul class="nav-menu">
-                <li class="nav-item"><a href="#" class="nav-link" data-i18n="nav_home">Accueil</a></li>
+                <li class="nav-item"><a href="index.html" class="nav-link" data-i18n="nav_home">Accueil</a></li>
                 <li class="nav-item" id="nav-courses">
                     <a href="#" class="nav-link"><span data-i18n="nav_courses">Formations</span> <i class="fas fa-chevron-down" style="font-size: 0.7rem;"></i></a>
                     <ul class="dropdown-content">
@@ -707,7 +714,7 @@
                 <li class="nav-item"><a href="#" class="nav-link" data-i18n="nav_infra">Infrastructure</a></li>
                 <li class="nav-item"><a href="#" class="nav-link" data-i18n="nav_blog">Blog</a></li>
                 <li class="nav-item"><a href="FAQ.html" class="nav-link" data-i18n="nav_faq">FAQ</a></li>
-                <li class="nav-item"><a href="#" class="nav-link" data-i18n="nav_contact">Contact</a></li>
+                <li class="nav-item"><a href="contact.html" class="nav-link" data-i18n="nav_contact">Contact</a></li>
                 <li><a href="#" class="btn-enroll" data-i18n="btn_enroll">S'inscrire</a></li>
                 <li class="theme-toggle" id="theme-btn"><i class="fas fa-moon"></i></li>
                 <li class="mobile-lang-switcher">
@@ -734,7 +741,7 @@
     <section class="section-padding">
         <div class="about-container">
             <div class="about-image-wrapper reveal">
-                <img src="images/img7.jpg" alt="About LessGooo" class="about-img">
+                <img src="images/im8.jpg" alt="About LessGooo" class="about-img">
             </div>
             <div class="about-content reveal">
                 <h2 class="section-title-left" data-i18n="about_title">À Propos de LessGooo</h2>
@@ -924,7 +931,7 @@
             <div class="footer-section reveal">
                 <h4>Contact</h4>
                 <p>info@lessgooo.com</p>
-                <p>Douala/Yaoundé, Cameroun</p>
+                <p>Cameroun, Douala, Bonabéri</p>
             </div>
         </div>
         <div class="footer-bottom">
@@ -981,6 +988,19 @@
             }
 
             setTimeout(typeEffect, typeSpeed);
+        }
+
+        // Fonction pour mettre en surbrillance le lien de la page active
+        function highlightActiveLink() {
+            const currentPath = window.location.pathname.split('/').pop(); // Obtient le nom du fichier de la page actuelle
+            document.querySelectorAll('.nav-menu .nav-link').forEach(link => {
+                link.classList.remove('active-page'); // Supprime la classe active existante
+                const linkPath = link.getAttribute('href');
+                // Gère le cas de la page d'accueil (index.html) lorsque le chemin est vide
+                if ((currentPath === '' && linkPath === 'index.html') || (linkPath === currentPath)) {
+                    link.classList.add('active-page');
+                }
+            });
         }
 
         function setTheme(isDark) {
@@ -1087,6 +1107,7 @@
             isDeleting = false; // Indispensable pour éviter que l'index ne devienne négatif
             if (textElement) textElement.textContent = ''; // Vide le texte immédiatement
         }
+        
 
         themeBtn.addEventListener('click', () => {
             setTheme(!document.body.classList.contains('dark-theme'));
@@ -1095,6 +1116,7 @@
         // Initialisation : Mode Clair par défaut (logo2.png)
         const savedTheme = localStorage.getItem('theme') || 'light';
         setTheme(savedTheme === 'dark');
+        highlightActiveLink(); // Appelle au chargement initial
         changeLanguage(currentLang);
 
         window.addEventListener('scroll', updateHeaderScroll);
