@@ -215,20 +215,20 @@
 
             <ul class="nav-menu">
                 <li class="nav-item"><a href="index.html" class="nav-link" data-i18n="nav_home">Accueil</a></li>
-                <li class="nav-item">
-                    <a href="#" class="nav-link"><span data-i18n="nav_courses">Formations</span> <i class="fas fa-chevron-down" style="font-size: 0.7rem;"></i></a>
+                <li class="nav-item" id="nav-learning-hub">
+                    <a href="#" class="nav-link"><span data-i18n="nav_courses">Learning Hub</span> <i class="fas fa-chevron-down" style="font-size: 0.7rem;"></i></a>
                     <ul class="dropdown-content">
-                        <li><a href="#">DevOps Foundation</a></li>
-                        <li><a href="#">AWS Cloud Solutions</a></li>
-                        <li><a href="#">Kubernetes Expert</a></li>
-                        <li><a href="#">CI/CD Pipelines</a></li>
+                        <li><a href="#" data-i18n="ssp_devops">SSP DevOps</a></li>
+                        <li><a href="#" data-i18n="ssp_cloud">SSP AWS Cloud</a></li>
+                        <li><a href="#" data-i18n="ssp_k8s">SSP Kubernetes</a></li>
+                        <li><a href="#" data-i18n="ssp_kids">Tech for Kids & Parents</a></li>
                     </ul>
                 </li>
                 <li class="nav-item"><a href="#" class="nav-link" data-i18n="nav_infra">Infrastructure</a></li>
                 <li class="nav-item"><a href="#" class="nav-link" data-i18n="nav_blog">Blog</a></li>
                 <li class="nav-item"><a href="FAQ.html" class="nav-link" data-i18n="nav_faq">FAQ</a></li>
                 <li class="nav-item"><a href="contact.html" class="nav-link" data-i18n="nav_contact">Contact</a></li>
-                <li><a href="#" class="btn-enroll" data-i18n="btn_enroll">S'inscrire</a></li>
+                <li><a href="#" class="btn-enroll" data-i18n="btn_enroll">Rejoindre le Hub</a></li>
                 <li class="theme-toggle" id="theme-btn"><i class="fas fa-moon"></i></li>
                 <li class="mobile-lang-switcher">
                     <div class="language-switcher">
@@ -242,8 +242,8 @@
     </header>
 
     <section class="contact-hero">
-        <h1 class="reveal" data-i18n="contact_h1">Contactez l'Équipe LessGooo</h1>
-        <p class="reveal" data-i18n="contact_p">Une question ? Un projet ? Écrivez-nous directement sur WhatsApp.</p>
+        <h1 class="reveal" data-i18n="contact_h1">Rejoignez le Hub LessGooo</h1>
+        <p class="reveal" data-i18n="contact_p">Prêt pour l'aventure SSP ? Une question sur l'éducation tech ? Écrivez-nous.</p>
     </section>
 
     <div class="contact-section">
@@ -283,11 +283,11 @@
                 </div>
                 <div class="form-group">
                     <label data-i18n="label_subject">Sujet de la demande</label>
-                    <input type="text" id="subject" class="form-control" placeholder="Ex: Inscription" required>
+                    <input type="text" id="subject" class="form-control" placeholder="Ex: Accès SSP / Éducation Enfants" required>
                 </div>
                 <div class="form-group">
                     <label data-i18n="label_msg">Votre Message</label>
-                    <textarea id="message" class="form-control" rows="5" placeholder="Comment pouvons-nous vous aider ?" required></textarea>
+                    <textarea id="message" class="form-control" rows="5" placeholder="Parlez-nous de vos objectifs d'auto-apprentissage ou de vos projets éducatifs." required></textarea>
                 </div>
                 <button type="submit" class="btn-whatsapp">
                     <i class="fab fa-whatsapp"></i> <span data-i18n="btn_send">Envoyer sur WhatsApp</span>
@@ -304,20 +304,22 @@
     <script>
         const translations = {
             fr: {
-                nav_home: "Accueil", nav_courses: "Formations", nav_infra: "Infrastructure",
+                nav_home: "Hub Accueil", nav_courses: "Learning Hub", nav_infra: "Infrastructure",
                 nav_blog: "Blog", nav_faq: "FAQ", nav_contact: "Contact", btn_enroll: "S'inscrire",
-                contact_h1: "Contactez l'Équipe LessGooo", contact_p: "Une question ? Un projet ? Écrivez-nous directement sur WhatsApp.",
-                info_title: "Nos Coordonnées", info_loc: "Localisation", info_phone: "Téléphone", info_mail: "Email",
+                contact_h1: "Échangez avec le Hub", contact_p: "Prêt pour l'aventure SSP ? Une question sur l'éducation tech en famille ? Écrivez-nous.",
+                info_title: "Le Hub à Douala", info_loc: "Localisation", info_phone: "Contact Direct", info_mail: "Email",
                 form_title: "Envoyez un message", label_name: "Nom Complet", label_subject: "Sujet", label_msg: "Votre Message",
-                btn_send: "Envoyer sur WhatsApp", form_note: "* Vous serez redirigé vers l'application WhatsApp."
+                btn_send: "Envoyer sur WhatsApp", form_note: "* Vous serez redirigé vers l'application WhatsApp.",
+                ssp_devops: "SSP DevOps", ssp_cloud: "SSP AWS Cloud", ssp_k8s: "SSP Kubernetes", ssp_kids: "Éducation Tech Enfants"
             },
             en: {
-                nav_home: "Home", nav_courses: "Courses", nav_infra: "Infrastructure",
+                nav_home: "Hub Home", nav_courses: "Learning Hub", nav_infra: "Infrastructure",
                 nav_blog: "Blog", nav_faq: "FAQ", nav_contact: "Contact", btn_enroll: "Enroll Now", 
-                contact_h1: "Contact the LessGooo Team", contact_p: "A question? A project? Write to us directly on WhatsApp.",
+                contact_h1: "Join the LessGooo Hub", contact_p: "Ready for the SSP adventure? A question about tech education? Write to us.",
                 info_title: "Contact Details", info_loc: "Location", info_phone: "Phone", info_mail: "Email",
                 form_title: "Send a message", label_name: "Full Name", label_subject: "Subject", label_msg: "Your Message",
-                btn_send: "Send on WhatsApp", form_note: "* You will be redirected to WhatsApp."
+                btn_send: "Send on WhatsApp", form_note: "* You will be redirected to WhatsApp.",
+                ssp_devops: "SSP DevOps", ssp_cloud: "SSP AWS Cloud", ssp_k8s: "SSP Kubernetes", ssp_kids: "Kids Tech Education"
             }
         };
 

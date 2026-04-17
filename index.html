@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>LessGooo | DevOps Training Center</title>
+    <title>LessGooo | DevOps Learning Hub & SSP</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
@@ -702,20 +702,20 @@
 
             <ul class="nav-menu">
                 <li class="nav-item"><a href="index.html" class="nav-link" data-i18n="nav_home">Accueil</a></li>
-                <li class="nav-item" id="nav-courses">
-                    <a href="#" class="nav-link"><span data-i18n="nav_courses">Formations</span> <i class="fas fa-chevron-down" style="font-size: 0.7rem;"></i></a>
+                <li class="nav-item" id="nav-learning-hub">
+                    <a href="#" class="nav-link"><span data-i18n="nav_courses">Learning Hub</span> <i class="fas fa-chevron-down" style="font-size: 0.7rem;"></i></a>
                     <ul class="dropdown-content">
-                        <li><a href="#">DevOps Foundation</a></li>
-                        <li><a href="#">AWS Cloud Solutions</a></li>
-                        <li><a href="#">Kubernetes Expert</a></li>
-                        <li><a href="#">CI/CD Pipelines</a></li>
+                        <li><a href="#" data-i18n="ssp_devops">SSP DevOps</a></li>
+                        <li><a href="#" data-i18n="ssp_cloud">SSP AWS Cloud</a></li>
+                        <li><a href="#" data-i18n="ssp_k8s">SSP Kubernetes</a></li>
+                        <li><a href="#" data-i18n="ssp_kids">Tech for Kids & Parents</a></li>
                     </ul>
                 </li>
                 <li class="nav-item"><a href="#" class="nav-link" data-i18n="nav_infra">Infrastructure</a></li>
                 <li class="nav-item"><a href="#" class="nav-link" data-i18n="nav_blog">Blog</a></li>
                 <li class="nav-item"><a href="FAQ.html" class="nav-link" data-i18n="nav_faq">FAQ</a></li>
                 <li class="nav-item"><a href="contact.html" class="nav-link" data-i18n="nav_contact">Contact</a></li>
-                <li><a href="#" class="btn-enroll" data-i18n="btn_enroll">S'inscrire</a></li>
+                <li><a href="#" class="btn-enroll" data-i18n="btn_enroll">Rejoindre le Hub</a></li>
                 <li class="theme-toggle" id="theme-btn"><i class="fas fa-moon"></i></li>
                 <li class="mobile-lang-switcher">
                     <div class="language-switcher">
@@ -732,7 +732,7 @@
         <div class="hero-container reveal">
             <section>
                 <h1><span data-i18n="hero_title">Propulsez votre carrière avec </span><span id="typing-text" style="color: var(--primary-color);"></span><span class="typing-cursor"></span></h1>
-                <p data-i18n="hero_desc">L'ecole de référence pour la formation DevOps et Cloud Native. Apprenez les outils de demain : Docker, Kubernetes, Terraform et plus encore.</p>
+                <p data-i18n="hero_desc">Votre Learning Hub collaboratif pour maîtriser le DevOps via notre Self-Study Program (SSP). Échangez, pratiquez et progressez ensemble vers l'expertise Cloud.</p>
             </section>
         </div>
     </main>
@@ -744,13 +744,14 @@
                 <img src="images/im8.jpg" alt="About LessGooo" class="about-img">
             </div>
             <div class="about-content reveal">
-                <h2 class="section-title-left" data-i18n="about_title">À Propos de LessGooo</h2>
-                <p data-i18n="about_p1">LessGooo est le centre d'excellence dédié à la transformation digitale et à la formation DevOps. Notre approche est simple : transformer des passionnés en experts opérationnels grâce à une immersion totale dans les technologies Cloud Native.</p>
-                <p data-i18n="about_p2">Nous ne nous contentons pas d'enseigner des outils ; nous forgeons l'état d'esprit nécessaire pour naviguer dans l'écosystème technologique moderne avec confiance et agilité.</p>
+                <h2 class="section-title-left" data-i18n="about_title">L'Esprit LessGooo Hub</h2>
+                <p data-i18n="about_p1">LessGooo n'est pas une école, c'est un Learning Hub communautaire. Nous proposons un Self-Study Program (SSP) unique où l'apprentissage se fait par l'échange, l'expérimentation et le partage entre pairs.</p>
+                <p data-i18n="about_p2">Nous encourageons activement les parents à intégrer la technologie dans l'éducation de leurs enfants pour en faire les acteurs du monde de demain. Apprendre ici, c'est intégrer un écosystème vivant.</p>
                 <ul class="about-features-list">
-                    <li><i class="fas fa-check-double"></i> <span data-i18n="about_f1">Accompagnement de A à Z par des mentors certifiés</span></li>
-                    <li><i class="fas fa-check-double"></i> <span data-i18n="about_f2">Infrastructure Cloud dédiée pour chaque étudiant</span></li>
-                    <li><i class="fas fa-check-double"></i> <span data-i18n="about_f3">Préparation intensive aux certifications mondiales</span></li>
+                    <li><i class="fas fa-check-double"></i> <span data-i18n="about_f1">Apprentissage entre pairs et mentorat communautaire</span></li>
+                    <li><i class="fas fa-check-double"></i> <span data-i18n="about_f2">Accès libre à une infrastructure Cloud en auto-apprentissage</span></li>
+                    <li><i class="fas fa-check-double"></i> <span data-i18n="about_f3">Coaching dédié aux parents pour l'éveil tech des enfants</span></li>
+                    <li><i class="fas fa-check-double"></i> <span data-i18n="about_f4">Structure SSP flexible adaptée à votre rythme</span></li>
                 </ul>
             </div>
         </div>
@@ -758,7 +759,7 @@
 
     <!-- SECTION COURSES -->
     <section class="section-padding courses-section">
-        <h2 class="section-title reveal" data-i18n="courses_title">Nos Formations Phares</h2>
+        <h2 class="section-title reveal" data-i18n="courses_title">Nos Programmes d'Apprentissage (SSP)</h2>
         <div class="course-grid">
             <div class="course-card reveal">
                 <div class="course-img">
@@ -787,7 +788,7 @@
                 </div>
                 <div class="course-info">
                     <h3 data-i18n="course_3_h">IA pour Enfants</h3>
-                    <p data-i18n="course_3_p">Initiation ludique et pédagogique à l'Intelligence Artificielle pour les génies de demain.</p>
+                    <p data-i18n="course_3_p">Accompagner les parents dans l'éveil technologique de leurs enfants via des solutions tech éducatives et ludiques.</p>
                     <a href="#" class="nav-link" style="color:var(--primary-color); font-weight:700;" data-i18n="learn_more">En savoir plus →</a>
                 </div>
             </div>
@@ -800,7 +801,7 @@
             <div class="stat-item reveal">
                 <i class="fas fa-user-graduate"></i>
                 <h2><span class="counter" data-target="2000">0</span>+</h2>
-                <p data-i18n="stat_graduates">Diplômés depuis 2021</p>
+                <p data-i18n="stat_graduates">Membres du Hub depuis 2021</p>
             </div>
             <div class="stat-item reveal">
                 <i class="fas fa-briefcase"></i>
@@ -856,13 +857,13 @@
 
     <!-- SECTION TESTIMONIALS -->
     <section class="testimonials-section">
-        <h2 class="section-title reveal" data-i18n="testimonials_title">Ce que disent nos étudiants</h2>
+        <h2 class="section-title reveal" data-i18n="testimonials_title">Paroles de membres</h2>
         <div class="testimonials-slider">
             <div class="testimonials-track">
                 <!-- Groupe 1 -->
                 <div class="testimonial-card-slide">
                     <i class="fas fa-quote-left"></i>
-                    <p class="testimonial-text">"La formation chez LessGooo a totalement changé ma vision du Cloud. Les labs pratiques sur AWS sont incroyables."</p>
+                    <p class="testimonial-text">"L'approche SSP chez LessGooo a totalement changé ma vision du Cloud. On apprend les uns des autres de manière concrète."</p>
                     <div class="testimonial-user">
                         <div class="user-avatar">SN</div>
                         <div class="user-info"><h5>Samuel Ndoumbe</h5><span>Cloud Engineer @ TechCorp</span></div>
@@ -918,14 +919,14 @@
         <div class="footer-content">
             <div class="footer-section reveal">
                 <h4>LessGooo</h4>
-                <p>L'excellence DevOps accessible à tous.</p>
+                <p>L'écosystème DevOps collaboratif pour tous.</p>
             </div>
             <div class="footer-section reveal">
-                <h4 data-i18n="nav_courses">Formations</h4>
+                <h4 data-i18n="nav_courses">Learning Hub</h4>
                 <ul>
-                    <li><a href="#">Cloud Computing</a></li>
-                    <li><a href="#">Infrastructure as Code</a></li>
-                    <li><a href="#">Security (DevSecOps)</a></li>
+                    <li><a href="#">Partage Cloud</a></li>
+                    <li><a href="#">Automatisation (IaC)</a></li>
+                    <li><a href="#">Culture DevSecOps</a></li>
                 </ul>
             </div>
             <div class="footer-section reveal">
@@ -935,7 +936,7 @@
             </div>
         </div>
         <div class="footer-bottom">
-            &copy; 2024 LessGooo DevOps Training. All rights reserved.
+            &copy; 2024 LessGooo Learning Hub. All rights reserved.
         </div>
     </footer>
 
@@ -1014,72 +1015,82 @@
         // --- SYSTEME MULTILINGUE ---
         const translations = {
             fr: {
-                nav_home: "Accueil",
-                nav_courses: "Formations",
+                nav_home: "Hub Accueil",
+                nav_courses: "Learning Hub",
                 nav_infra: "Infrastructure",
                 nav_blog: "Blog",
                 nav_faq: "FAQ",
                 nav_contact: "Contact",
-                btn_enroll: "S'inscrire",
-                hero_title: "Propulsez votre carrière avec ",
-                hero_desc: "L'ecole de référence pour la formation DevOps et Cloud Native. Apprenez les outils de demain : Docker, Kubernetes, Terraform et plus encore.",
-                typing_words: ["LessGooo", "le DevOps", "le Cloud", "l'Infrastructure"],
-                about_title: "À Propos de LessGooo",
-                about_p1: "LessGooo est le centre d'excellence dédié à la transformation digitale et à la formation DevOps. Notre approche est simple : transformer des passionnés en experts opérationnels grâce à une immersion totale dans les technologies Cloud Native.",
-                about_p2: "Nous ne nous contentons pas d'enseigner des outils ; nous forgeons l'état d'esprit nécessaire pour naviguer dans l'écosystème technologique moderne avec confiance et agilité.",
-                about_f1: "Accompagnement de A à Z par des mentors certifiés",
-                about_f2: "Infrastructure Cloud dédiée pour chaque étudiant",
-                about_f3: "Préparation intensive aux certifications mondiales",
-                feat_title: "L'excellence au service de votre ambition",
+                btn_enroll: "Rejoindre la Communauté",
+                hero_title: "Échangez et apprenez avec ",
+                hero_desc: "Un écosystème collaboratif pour maîtriser le DevOps via le Self-Study Program (SSP). Ici, on apprend les uns des autres pour dompter le Cloud.",
+                typing_words: ["LessGooo Hub", "l'Auto-apprentissage", "la Communauté", "le SSP DevOps"],
+                about_title: "L'Esprit LessGooo Hub",
+                about_p1: "LessGooo n'est pas une école, c'est un Learning Hub communautaire. Nous proposons un Self-Study Program (SSP) unique où l'apprentissage se fait par l'échange, l'expérimentation et le partage entre pairs.",
+                about_p2: "Nous encourageons vivement les parents à intégrer la technologie dans l'éducation de leurs enfants pour en faire les créateurs de demain.",
+                about_f1: "Apprentissage entre pairs et mentorat communautaire",
+                about_f2: "Infrastructure Cloud en auto-apprentissage (SSP)",
+                about_f3: "Coaching parents : intégrer la tech en famille",
+                about_f4: "SSP : Un programme d'auto-apprentissage flexible",
+                feat_title: "Pourquoi échanger chez nous ?",
                 feat_1_h: "Mentors Experts", feat_1_p: "Maîtrisez les codes du métier avec des mentors qui vivent le DevOps au quotidien.",
                 feat_2_h: "Labs Pratiques", feat_2_p: "Dominez le Cloud par l'action avec 95% de pratique intensive sur des infrastructures réelles.",
                 feat_3_h: "Communauté Active", feat_3_p: "Intégrez un écosystème d'entraide pour partager des opportunités et résoudre des défis complexes.",
-                courses_title: "Nos Formations Phares",
-                stat_graduates: "Diplômés depuis 2021",
+                courses_title: "Nos Programmes SSP",
+                stat_graduates: "Membres du Hub",
                 stat_employment: "Emploi trouvé sous 7 mois",
                 stat_satisfaction: "Score de satisfaction",
                 stat_rating: "Note moyenne / 10",
-                testimonials_title: "Ce que disent nos étudiants",
-                course_1_h: "DevOps Foundation",
-                course_1_p: "Devenez l'architecte de demain. Maîtrisez l'arsenal complet du DevOps : Docker, Kubernetes, Terraform, Jenkins et bien plus pour automatiser l'impossible.",
-                course_3_h: "IA pour Enfants",
-                course_3_p: "Initiation ludique et pédagogique à l'Intelligence Artificielle pour les génies de demain.",
-                badge_kids: "Spécial Enfants",
-                learn_more: "En savoir plus →"
+                testimonials_title: "Paroles de membres",
+                course_1_h: "Parcours SSP DevOps",
+                course_1_p: "Apprenez en autonomie et avec la communauté : Docker, Kubernetes, Terraform et automatisation.",
+                course_3_h: "Tech & Education Parents",
+                course_3_p: "Guider les parents pour intégrer intelligemment la tech dans l'éducation de leurs enfants.",
+                badge_kids: "Spécial Parents",
+                learn_more: "Découvrir →",
+                ssp_devops: "SSP DevOps",
+                ssp_cloud: "SSP AWS Cloud",
+                ssp_k8s: "SSP Kubernetes",
+                ssp_kids: "Éducation Tech Enfants"
             },
             en: {
-                nav_home: "Home",
-                nav_courses: "Courses",
+                nav_home: "Hub Home",
+                nav_courses: "Learning Hub",
                 nav_infra: "Infrastructure",
                 nav_blog: "Blog",
                 nav_faq: "FAQ",
                 nav_contact: "Contact",
-                btn_enroll: "Enroll Now",
-                hero_title: "Boost your career with ",
-                hero_desc: "The leading school for DevOps and Cloud Native training. Learn tomorrow's tools: Docker, Kubernetes, Terraform and more.",
-                typing_words: ["LessGooo", "DevOps", "Cloud", "Infrastructure"],
-                about_title: "About LessGooo",
-                about_p1: "LessGooo is the center of excellence dedicated to digital transformation and DevOps training. Our approach is simple: transform enthusiasts into operational experts through total immersion in Cloud Native technologies.",
-                about_p2: "We don't just teach tools; we forge the mindset needed to navigate the modern tech ecosystem with confidence and agility.",
-                about_f1: "End-to-end support by certified mentors",
-                about_f2: "Dedicated Cloud infrastructure for each student",
-                about_f3: "Intensive preparation for global certifications",
-                feat_title: "Excellence for your ambition",
+                btn_enroll: "Join the Community",
+                hero_title: "Exchange and learn with ",
+                hero_desc: "A collaborative ecosystem to master DevOps via the Self-Study Program (SSP). Here, we learn from each other to master the Cloud.",
+                typing_words: ["LessGooo Hub", "Self-Study", "Community", "DevOps SSP"],
+                about_title: "The LessGooo Hub Spirit",
+                about_p1: "LessGooo is not a school, it's a community Learning Hub. We offer a unique Self-Study Program (SSP) where learning happens through peer exchange and sharing.",
+                about_p2: "We actively encourage parents to integrate technology into their children's education to make them the creators of tomorrow.",
+                about_f1: "Peer-to-peer learning and community mentoring",
+                about_f2: "Self-Study Cloud Infrastructure (SSP)",
+                about_f3: "Parent coaching: integrating tech at home",
+                about_f4: "SSP: A flexible self-learning program",
+                feat_title: "Why join our Hub?",
                 feat_1_h: "Expert Mentors", feat_1_p: "Master industry standards with mentors who live and breathe DevOps every day.",
                 feat_2_h: "Practical Labs", feat_2_p: "Conquer the Cloud through action with 95% intensive practice on real infrastructure.",
                 feat_3_h: "Active Community", feat_3_p: "Join a supportive ecosystem to share opportunities and solve complex technical challenges.",
-                courses_title: "Our Featured Courses",
-                stat_graduates: "Graduates since 2021",
+                courses_title: "Our SSP Programs",
+                stat_graduates: "Hub Members",
                 stat_employment: "Job found within 7 months",
                 stat_satisfaction: "Satisfaction score",
                 stat_rating: "Average Rating / 10",
-                testimonials_title: "What our students say",
-                course_1_h: "DevOps Foundation",
-                course_1_p: "Become the architect of tomorrow. Master the full DevOps arsenal: Docker, Kubernetes, Terraform, Jenkins, and much more to automate the impossible.",
-                course_3_h: "AI for Kids",
-                course_3_p: "A fun and educational introduction to Artificial Intelligence for tomorrow's geniuses.",
-                badge_kids: "Special Kids",
-                learn_more: "Learn more →"
+                testimonials_title: "Member Stories",
+                course_1_h: "SSP DevOps Path",
+                course_1_p: "Learn independently and with the community: Docker, Kubernetes, Terraform and automation.",
+                course_3_h: "Tech & Education for Parents",
+                course_3_p: "Guiding parents to intelligently integrate tech into their children's education.",
+                badge_kids: "Parent Special",
+                learn_more: "Discover →",
+                ssp_devops: "SSP DevOps",
+                ssp_cloud: "SSP AWS Cloud",
+                ssp_k8s: "SSP Kubernetes",
+                ssp_kids: "Kids Tech Education"
             }
         };
 
