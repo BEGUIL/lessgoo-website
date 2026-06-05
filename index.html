@@ -116,11 +116,17 @@
             margin: 0 auto;
         }
 
+        .logo a {
+            display: flex;
+            align-items: center;
+            min-width: 180px; /* Verrouille l'espace du logo pour éviter le décalage */
+        }
+
         .logo img {
-            height: 65px; /* Taille réduite pour un menu plus fin */
+            height: 55px; /* Taille standardisée plus stable */
             width: auto;
             object-fit: contain;
-            display: block;
+            display: inline-block;
             transition: opacity 0.3s ease;
         }
 
@@ -128,6 +134,7 @@
             list-style: none;
             display: flex;
             gap: 30px;
+            gap: 20px; /* Réduit pour accommoder les textes longs en FR */
             align-items: center;
         }
 
@@ -186,10 +193,12 @@
         .btn-enroll {
             background: var(--primary-color);
             color: #ffffff;
-            padding: 12px 25px;
+            padding: 10px 22px; /* Padding ajusté pour l'alignement vertical */
             border-radius: 5px;
             font-weight: 600;
             text-decoration: none;
+            display: inline-block;
+            white-space: nowrap;
             transition: var(--transition);
             border: 2px solid var(--primary-color);
         }
@@ -304,8 +313,9 @@
         /* Style pour le lien de la page active */
         .nav-link.active-page {
             color: var(--primary-color) !important;
-            font-weight: 700;
+            font-weight: 600; /* Moins de décalage de largeur que 700 */
         }
+
         /* --- HERO SECTION (Background Image) --- */
         .hero-section {
             background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('images/ep6.jpg');
@@ -487,6 +497,12 @@
             height: 100%; 
             object-fit: cover; 
             transition: transform 0.5s ease;
+        }
+        /* Ajustement spécifique pour les logos/illustrations dans les cartes */
+        .course-img img.logo-type {
+            object-fit: contain;
+            padding: 25px;
+            background: var(--header-bg);
         }
         .feature-card:hover img.mentor-photo, .course-card:hover img.mentor-photo {
             transform: scale(1.05);
@@ -706,13 +722,14 @@
                     <a href="#" class="nav-link"><span data-i18n="nav_courses">Learning Hub</span> <i class="fas fa-chevron-down" style="font-size: 0.7rem;"></i></a>
                     <ul class="dropdown-content">
                         <li><a href="#" data-i18n="ssp_devops">SSP DevOps</a></li>
-                        <li><a href="#" data-i18n="ssp_cloud">SSP AWS Cloud</a></li>
-                        <li><a href="#" data-i18n="ssp_k8s">SSP Kubernetes</a></li>
-                        <li><a href="#" data-i18n="ssp_kids">Tech for Kids & Parents</a></li>
+                        <li><a href="#" data-i18n="ssp_cm">Community Manager</a></li>
+                        <li><a href="#" data-i18n="ssp_web">Développement Web</a></li>
+                        <li><a href="#" data-i18n="ssp_english">Anglais Business</a></li>
+                        <li><a href="#" data-i18n="ssp_german">Allemand (A1-C1)</a></li>
+                        <li><a href="#" data-i18n="ssp_heavy">Conduite d'engins lourds</a></li>
                     </ul>
                 </li>
-                <li class="nav-item"><a href="#" class="nav-link" data-i18n="nav_infra">Infrastructure</a></li>
-                <li class="nav-item"><a href="#" class="nav-link" data-i18n="nav_blog">Blog</a></li>
+                <li class="nav-item"><a href="about.html" class="nav-link" data-i18n="nav_about">Qui sommes-nous</a></li>
                 <li class="nav-item"><a href="FAQ.html" class="nav-link" data-i18n="nav_faq">FAQ</a></li>
                 <li class="nav-item"><a href="contact.html" class="nav-link" data-i18n="nav_contact">Contact</a></li>
                 <li><a href="#" class="btn-enroll" data-i18n="btn_enroll">Rejoindre le Hub</a></li>
@@ -737,21 +754,21 @@
         </div>
     </main>
 
-    <!-- SECTION ABOUT US -->
+    <!-- SECTION ABOUT TRAINING -->
     <section class="section-padding">
         <div class="about-container">
             <div class="about-image-wrapper reveal">
-                <img src="images/im8.jpg" alt="About LessGooo" class="about-img">
+                <img src="images/im8.jpg" alt="About Training LessGooo" class="about-img">
             </div>
             <div class="about-content reveal">
-                <h2 class="section-title-left" data-i18n="about_title">L'Esprit LessGooo Hub</h2>
-                <p data-i18n="about_p1">LessGooo n'est pas une école, c'est un Learning Hub communautaire. Nous proposons un Self-Study Program (SSP) unique où l'apprentissage se fait par l'échange, l'expérimentation et le partage entre pairs.</p>
-                <p data-i18n="about_p2">Nous encourageons activement les parents à intégrer la technologie dans l'éducation de leurs enfants pour en faire les acteurs du monde de demain. Apprendre ici, c'est intégrer un écosystème vivant.</p>
+                <h2 class="section-title-left" data-i18n="training_about_title">À propos de la formation à LessGooo</h2>
+                <p data-i18n="training_about_p1">Chez LessGooo, nous croyons en une approche pratique et collaborative de l'apprentissage. Nos programmes SSP (Self-Study Program) sont conçus pour vous immerger dans des scénarios réels, avec un accès à des infrastructures Cloud et un mentorat constant.</p>
+                <p data-i18n="training_about_p2">Nous mettons l'accent sur l'autonomie guidée, où chaque membre est encouragé à explorer, expérimenter et partager ses découvertes. C'est une méthode éprouvée pour maîtriser rapidement les compétences techniques demandées sur le marché.</p>
                 <ul class="about-features-list">
-                    <li><i class="fas fa-check-double"></i> <span data-i18n="about_f1">Apprentissage entre pairs et mentorat communautaire</span></li>
-                    <li><i class="fas fa-check-double"></i> <span data-i18n="about_f2">Accès libre à une infrastructure Cloud en auto-apprentissage</span></li>
-                    <li><i class="fas fa-check-double"></i> <span data-i18n="about_f3">Coaching dédié aux parents pour l'éveil tech des enfants</span></li>
-                    <li><i class="fas fa-check-double"></i> <span data-i18n="about_f4">Structure SSP flexible adaptée à votre rythme</span></li>
+                    <li><i class="fas fa-check-double"></i> <span data-i18n="training_f1">Apprentissage par la pratique (70% Labs)</span></li>
+                    <li><i class="fas fa-check-double"></i> <span data-i18n="training_f2">Accès à des infrastructures Cloud réelles</span></li>
+                    <li><i class="fas fa-check-double"></i> <span data-i18n="training_f3">Mentorat et soutien communautaire 24/7</span></li>
+                    <li><i class="fas fa-check-double"></i> <span data-i18n="training_f4">Préparation aux certifications internationales</span></li>
                 </ul>
             </div>
         </div>
@@ -766,29 +783,58 @@
                     <img src="images/img4.jpg" alt="DevOps Foundation" class="mentor-photo">
                 </div>
                 <div class="course-info">
-                    <h3 data-i18n="course_1_h">DevOps Foundation</h3>
-                    <p data-i18n="course_1_p">Devenez l'architecte de demain. Maîtrisez l'arsenal complet du DevOps : Docker, Kubernetes, Terraform, Jenkins et bien plus pour automatiser l'impossible.</p>
+                    <h3 data-i18n="ssp_devops">SSP DevOps</h3>
+                    <p data-i18n="course_dev_p">Maîtrisez l'arsenal complet : Docker, Kubernetes, Terraform et CI/CD.</p>
                     <a href="#" class="nav-link" style="color:var(--primary-color); font-weight:700;" data-i18n="learn_more">En savoir plus →</a>
                 </div>
             </div>
             <div class="course-card reveal">
                 <div class="course-img">
-                    <img src="images/img3.jpg" alt="AWS Solutions" class="mentor-photo">
+                    <img src="images/img11.jpg" alt="Community Manager" class="mentor-photo">
                 </div>
                 <div class="course-info">
-                    <h3>AWS Solutions</h3>
-                    <p>Architecturez des solutions scalables sur Amazon Web Services.</p>
-                    <a href="#" class="nav-link" style="color:var(--primary-color); font-weight:700;">En savoir plus →</a>
+                    <h3 data-i18n="ssp_cm">Community Manager</h3>
+                    <p data-i18n="course_cm_p">Devenez l'expert des réseaux sociaux et de l'e-réputation.</p>
+                    <a href="#" class="nav-link" style="color:var(--primary-color); font-weight:700;" data-i18n="learn_more">En savoir plus →</a>
                 </div>
             </div>
             <div class="course-card reveal">
-                <span class="course-badge" data-i18n="badge_kids">Special Kids</span>
                 <div class="course-img">
-                    <img src="images/img6.jpg" alt="IA pour Enfants" class="mentor-photo">
+                    <img src="images/img12.jpg" alt="Développement Web" class="mentor-photo">
                 </div>
                 <div class="course-info">
-                    <h3 data-i18n="course_3_h">IA pour Enfants</h3>
-                    <p data-i18n="course_3_p">Accompagner les parents dans l'éveil technologique de leurs enfants via des solutions tech éducatives et ludiques.</p>
+                    <h3 data-i18n="ssp_web">Développement Web</h3>
+                    <p data-i18n="course_web_p">Créez des sites et applications web modernes (Fullstack).</p>
+                    <a href="#" class="nav-link" style="color:var(--primary-color); font-weight:700;" data-i18n="learn_more">En savoir plus →</a>
+                </div>
+            </div>
+            <div class="course-card reveal">
+                <div class="course-img">
+                    <img src="images/img14.jpg" alt="Anglais Business" class="mentor-photo">
+                </div>
+                <div class="course-info">
+                    <h3 data-i18n="ssp_english">Anglais Business</h3>
+                    <p data-i18n="course_en_p">Boostez votre carrière avec une maîtrise parfaite de l'anglais pro.</p>
+                    <a href="#" class="nav-link" style="color:var(--primary-color); font-weight:700;" data-i18n="learn_more">En savoir plus →</a>
+                </div>
+            </div>
+            <div class="course-card reveal">
+                <div class="course-img">
+                    <img src="images/img15.jpg" alt="Allemand" class="mentor-photo">
+                </div>
+                <div class="course-info">
+                    <h3 data-i18n="ssp_german">Allemand (A1-C1)</h3>
+                    <p data-i18n="course_de_p">Préparez vos projets d'études ou de travail en Allemagne.</p>
+                    <a href="#" class="nav-link" style="color:var(--primary-color); font-weight:700;" data-i18n="learn_more">En savoir plus →</a>
+                </div>
+            </div>
+            <div class="course-card reveal">
+                <div class="course-img">
+                    <img src="images/img13.jpg" alt="Engins Lourds" class="mentor-photo">
+                </div>
+                <div class="course-info">
+                    <h3 data-i18n="ssp_heavy">Engins Lourds</h3>
+                    <p data-i18n="course_heavy_p">Formation technique à la conduite et maintenance d'engins de chantier.</p>
                     <a href="#" class="nav-link" style="color:var(--primary-color); font-weight:700;" data-i18n="learn_more">En savoir plus →</a>
                 </div>
             </div>
@@ -804,9 +850,9 @@
                 <p data-i18n="stat_graduates">Membres du Hub depuis 2021</p>
             </div>
             <div class="stat-item reveal">
-                <i class="fas fa-briefcase"></i>
+                <i class="fas fa-certificate"></i>
                 <h2><span class="counter" data-target="89">0</span>%</h2>
-                <p data-i18n="stat_employment">Emploi trouvé sous 7 mois</p>
+                <p data-i18n="stat_employment">Réussite aux certifications</p>
             </div>
             <div class="stat-item reveal">
                 <i class="fas fa-check-circle"></i>
@@ -863,76 +909,87 @@
                 <!-- Groupe 1 -->
                 <div class="testimonial-card-slide">
                     <i class="fas fa-quote-left"></i>
-                    <p class="testimonial-text">"L'approche SSP chez LessGooo a totalement changé ma vision du Cloud. On apprend les uns des autres de manière concrète."</p>
+                    <p class="testimonial-text">"L'approche SSP a totalement changé ma vision du Cloud. Passer les certifications AWS et Docker est devenu une aventure collective passionnante."</p>
                     <div class="testimonial-user">
                         <div class="user-avatar">SN</div>
-                        <div class="user-info"><h5>Samuel Ndoumbe</h5><span>Cloud Engineer @ TechCorp</span></div>
+                        <div class="user-info"><h5>Samuel Ndoumbe</h5><span>SSP DevOps & Cloud</span></div>
                     </div>
                 </div>
                 <div class="testimonial-card-slide">
                     <i class="fas fa-quote-left"></i>
-                    <p class="testimonial-text">"Enfin une formation qui ne fait pas que de la théorie. On manipule Docker et K8s dès la première semaine."</p>
+                    <p class="testimonial-text">"Grâce au mentorat communautaire, j'ai pu coder mon premier projet Fullstack et maîtriser ma présence en ligne en tant que Community Manager."</p>
                     <div class="testimonial-user">
-                        <div class="user-avatar">NF</div>
-                        <div class="user-info"><h5>Nathalie Foko</h5><span>DevOps Junior @ StartUp</span></div>
+                        <div class="user-avatar">KT</div>
+                        <div class="user-info"><h5>Karine Tchakounté</h5><span>Web Dev & CM</span></div>
                     </div>
                 </div>
                 <div class="testimonial-card-slide">
                     <i class="fas fa-quote-left"></i>
-                    <p class="testimonial-text">"Le support 24/7 et la communauté Discord m'ont aidé à débloquer des situations complexes en un rien de temps."</p>
+                    <p class="testimonial-text">"Apprendre l'Allemand pro tout en me formant sur les engins lourds m'a ouvert des portes incroyables. Le Hub est un vrai tremplin polyvalent."</p>
                     <div class="testimonial-user">
-                        <div class="user-avatar">IB</div>
-                        <div class="user-info"><h5>Ibrahim Bakary</h5><span>SRE @ DataFlow</span></div>
+                        <div class="user-avatar">JZ</div>
+                        <div class="user-info"><h5>Jean Zambo</h5><span>Engins Lourds & Langues</span></div>
                     </div>
                 </div>
                 
                 <!-- Doublon pour l'effet infini -->
                 <div class="testimonial-card-slide">
                     <i class="fas fa-quote-left"></i>
-                    <p class="testimonial-text">"La formation chez LessGooo a totalement changé ma vision du Cloud. Les labs pratiques sur AWS sont incroyables."</p>
+                    <p class="testimonial-text">"L'approche SSP a totalement changé ma vision du Cloud. Passer les certifications AWS et Docker est devenu une aventure collective passionnante."</p>
                     <div class="testimonial-user">
                         <div class="user-avatar">SN</div>
-                        <div class="user-info"><h5>Samuel Ndoumbe</h5><span>Cloud Engineer @ TechCorp</span></div>
+                        <div class="user-info"><h5>Samuel Ndoumbe</h5><span>SSP DevOps & Cloud</span></div>
                     </div>
                 </div>
                 <div class="testimonial-card-slide">
                     <i class="fas fa-quote-left"></i>
-                    <p class="testimonial-text">"Enfin une formation qui ne fait pas que de la théorie. On manipule Docker et K8s dès la première semaine."</p>
+                    <p class="testimonial-text">"Grâce au mentorat communautaire, j'ai pu coder mon premier projet Fullstack et maîtriser ma présence en ligne en tant que Community Manager."</p>
                     <div class="testimonial-user">
-                        <div class="user-avatar">NF</div>
-                        <div class="user-info"><h5>Nathalie Foko</h5><span>DevOps Junior @ StartUp</span></div>
+                        <div class="user-avatar">KT</div>
+                        <div class="user-info"><h5>Karine Tchakounté</h5><span>Web Dev & CM</span></div>
                     </div>
                 </div>
                 <div class="testimonial-card-slide">
                     <i class="fas fa-quote-left"></i>
-                    <p class="testimonial-text">"Le support 24/7 et la communauté Discord m'ont aidé à débloquer des situations complexes en un rien de temps."</p>
+                    <p class="testimonial-text">"Apprendre l'Allemand pro tout en me formant sur les engins lourds m'a ouvert des portes incroyables. Le Hub est un vrai tremplin polyvalent."</p>
                     <div class="testimonial-user">
-                        <div class="user-avatar">IB</div>
-                        <div class="user-info"><h5>Ibrahim Bakary</h5><span>SRE @ DataFlow</span></div>
+                        <div class="user-avatar">JZ</div>
+                        <div class="user-info"><h5>Jean Zambo</h5><span>Engins Lourds & Langues</span></div>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
+    <!-- SECTION PARTNER -->
+    <section class="section-padding reveal" style="text-align: center; padding-top: 40px; padding-bottom: 60px;">
+        <h2 class="section-title" data-i18n="partner_title">Notre Partenaire</h2>
+        <div style="display: flex; justify-content: center; align-items: center; margin-top: 20px;">
+            <img src="images/easylearning.png" alt="Partner Easy Learning" style="max-width: 250px; height: auto; filter: drop-shadow(0 5px 15px rgba(0,0,0,0.1));">
+        </div>
+    </section>
+
     <footer>
         <div class="footer-content">
             <div class="footer-section reveal">
-                <h4>LessGooo</h4>
-                <p>L'écosystème DevOps collaboratif pour tous.</p>
+                <img id="footer-logo-img" src="images/logo1.jpg" alt="LessGooo Logo" style="height: 65px; margin-bottom: 20px; display: block;">
+                <p data-i18n="footer_about">LessGooo est l'étincelle qui transforme vos ambitions en réalité. Bien plus qu’un Hub, c’est une famille où chaque défi relevé ensemble dessine un avenir plus brillant. Ensemble, bâtissons demain.</p>
             </div>
             <div class="footer-section reveal">
                 <h4 data-i18n="nav_courses">Learning Hub</h4>
                 <ul>
-                    <li><a href="#">Partage Cloud</a></li>
-                    <li><a href="#">Automatisation (IaC)</a></li>
-                    <li><a href="#">Culture DevSecOps</a></li>
+                    <li><a href="#" data-i18n="ssp_devops">SSP DevOps</a></li>
+                    <li><a href="#" data-i18n="ssp_cm">Community Manager</a></li>
+                    <li><a href="#" data-i18n="ssp_web">Développement Web</a></li>
+                    <li><a href="#" data-i18n="ssp_english">Anglais Business</a></li>
+                    <li><a href="#" data-i18n="ssp_german">Allemand (A1-C1)</a></li>
+                    <li><a href="#" data-i18n="ssp_heavy">Conduite d'engins lourds</a></li>
                 </ul>
             </div>
             <div class="footer-section reveal">
                 <h4>Contact</h4>
                 <p>info@lessgooo.com</p>
-                <p>Cameroun, Douala, Bonabéri</p>
+                <p>Bonabérie Mabandas (derrière la station BOCOM)</p>
             </div>
         </div>
         <div class="footer-bottom">
@@ -1017,31 +1074,32 @@
             fr: {
                 nav_home: "Hub Accueil",
                 nav_courses: "Learning Hub",
-                nav_infra: "Infrastructure",
-                nav_blog: "Blog",
+                nav_about: "Qui sommes-nous",
                 nav_faq: "FAQ",
                 nav_contact: "Contact",
-                btn_enroll: "Rejoindre la Communauté",
+                btn_enroll: "Rejoindre le Hub",
+                footer_about: "LessGooo est l'étincelle qui transforme vos ambitions en réalité. Bien plus qu’un Hub, c’est une famille où chaque défi relevé ensemble dessine un avenir plus brillant. Ensemble, bâtissons demain.",
                 hero_title: "Échangez et apprenez avec ",
                 hero_desc: "Un écosystème collaboratif pour maîtriser le DevOps via le Self-Study Program (SSP). Ici, on apprend les uns des autres pour dompter le Cloud.",
                 typing_words: ["LessGooo Hub", "l'Auto-apprentissage", "la Communauté", "le SSP DevOps"],
-                about_title: "L'Esprit LessGooo Hub",
-                about_p1: "LessGooo n'est pas une école, c'est un Learning Hub communautaire. Nous proposons un Self-Study Program (SSP) unique où l'apprentissage se fait par l'échange, l'expérimentation et le partage entre pairs.",
-                about_p2: "Nous encourageons vivement les parents à intégrer la technologie dans l'éducation de leurs enfants pour en faire les créateurs de demain.",
-                about_f1: "Apprentissage entre pairs et mentorat communautaire",
-                about_f2: "Infrastructure Cloud en auto-apprentissage (SSP)",
-                about_f3: "Coaching parents : intégrer la tech en famille",
-                about_f4: "SSP : Un programme d'auto-apprentissage flexible",
+                training_about_title: "À propos de la formation à LessGooo",
+                training_about_p1: "Chez LessGooo, nous croyons en une approche pratique et collaborative de l'apprentissage. Nos programmes SSP (Self-Study Program) sont conçus pour vous immerger dans des scénarios réels, avec un accès à des infrastructures Cloud et un mentorat constant.",
+                training_about_p2: "Nous mettons l'accent sur l'autonomie guidée, où chaque membre est encouragé à explorer, expérimenter et partager ses découvertes. C'est une méthode éprouvée pour maîtriser rapidement les compétences techniques demandées sur le marché.",
+                training_f1: "Apprentissage par la pratique (70% Labs)",
+                training_f2: "Accès à des infrastructures Cloud réelles",
+                training_f3: "Mentorat et soutien communautaire 24/7",
+                training_f4: "Préparation aux certifications internationales",
                 feat_title: "Pourquoi échanger chez nous ?",
                 feat_1_h: "Mentors Experts", feat_1_p: "Maîtrisez les codes du métier avec des mentors qui vivent le DevOps au quotidien.",
                 feat_2_h: "Labs Pratiques", feat_2_p: "Dominez le Cloud par l'action avec 95% de pratique intensive sur des infrastructures réelles.",
                 feat_3_h: "Communauté Active", feat_3_p: "Intégrez un écosystème d'entraide pour partager des opportunités et résoudre des défis complexes.",
                 courses_title: "Nos Programmes SSP",
                 stat_graduates: "Membres du Hub",
-                stat_employment: "Emploi trouvé sous 7 mois",
+                stat_employment: "Réussite aux certifications",
                 stat_satisfaction: "Score de satisfaction",
                 stat_rating: "Note moyenne / 10",
                 testimonials_title: "Paroles de membres",
+                partner_title: "Notre Partenaire",
                 course_1_h: "Parcours SSP DevOps",
                 course_1_p: "Apprenez en autonomie et avec la communauté : Docker, Kubernetes, Terraform et automatisation.",
                 course_3_h: "Tech & Education Parents",
@@ -1049,38 +1107,47 @@
                 badge_kids: "Spécial Parents",
                 learn_more: "Découvrir →",
                 ssp_devops: "SSP DevOps",
-                ssp_cloud: "SSP AWS Cloud",
-                ssp_k8s: "SSP Kubernetes",
-                ssp_kids: "Éducation Tech Enfants"
+                ssp_cm: "Community Manager",
+                ssp_web: "Développement Web",
+                ssp_english: "Anglais Business",
+                ssp_german: "Allemand (A1-C1)",
+                ssp_heavy: "Conduite d'engins lourds",
+                course_dev_p: "Maîtrisez l'arsenal complet : Docker, Kubernetes, Terraform et CI/CD.",
+                course_cm_p: "Devenez l'expert des réseaux sociaux et de l'e-réputation.",
+                course_web_p: "Créez des sites et applications web modernes (Fullstack).",
+                course_en_p: "Boostez votre carrière avec une maîtrise parfaite de l'anglais pro.",
+                course_de_p: "Préparez vos projets d'études ou de travail en Allemagne.",
+                course_heavy_p: "Formation technique à la conduite et maintenance d'engins de chantier."
             },
             en: {
                 nav_home: "Hub Home",
                 nav_courses: "Learning Hub",
-                nav_infra: "Infrastructure",
-                nav_blog: "Blog",
+                nav_about: "About Us",
                 nav_faq: "FAQ",
                 nav_contact: "Contact",
-                btn_enroll: "Join the Community",
+                btn_enroll: "Join the Hub",
+                footer_about: "LessGooo is the spark that transforms your ambitions into reality. More than a Hub, it’s a family where every challenge met together designs a brighter future. Together, let's build tomorrow.",
                 hero_title: "Exchange and learn with ",
                 hero_desc: "A collaborative ecosystem to master DevOps via the Self-Study Program (SSP). Here, we learn from each other to master the Cloud.",
                 typing_words: ["LessGooo Hub", "Self-Study", "Community", "DevOps SSP"],
-                about_title: "The LessGooo Hub Spirit",
-                about_p1: "LessGooo is not a school, it's a community Learning Hub. We offer a unique Self-Study Program (SSP) where learning happens through peer exchange and sharing.",
-                about_p2: "We actively encourage parents to integrate technology into their children's education to make them the creators of tomorrow.",
-                about_f1: "Peer-to-peer learning and community mentoring",
-                about_f2: "Self-Study Cloud Infrastructure (SSP)",
-                about_f3: "Parent coaching: integrating tech at home",
-                about_f4: "SSP: A flexible self-learning program",
+                training_about_title: "About LessGooo Training",
+                training_about_p1: "At LessGooo, we believe in a practical and collaborative approach to learning. Our SSP (Self-Study Program) programs are designed to immerse you in real-world scenarios, with access to Cloud infrastructures and constant mentoring.",
+                training_about_p2: "We emphasize guided autonomy, where each member is encouraged to explore, experiment, and share their discoveries. This is a proven method for quickly mastering the technical skills demanded by the market.",
+                training_f1: "Learning by doing (70% Labs)",
+                training_f2: "Access to real Cloud infrastructures",
+                training_f3: "24/7 Mentoring and community support",
+                training_f4: "Preparation for international certifications",
                 feat_title: "Why join our Hub?",
                 feat_1_h: "Expert Mentors", feat_1_p: "Master industry standards with mentors who live and breathe DevOps every day.",
                 feat_2_h: "Practical Labs", feat_2_p: "Conquer the Cloud through action with 95% intensive practice on real infrastructure.",
                 feat_3_h: "Active Community", feat_3_p: "Join a supportive ecosystem to share opportunities and solve complex technical challenges.",
                 courses_title: "Our SSP Programs",
                 stat_graduates: "Hub Members",
-                stat_employment: "Job found within 7 months",
+                stat_employment: "Certification success rate",
                 stat_satisfaction: "Satisfaction score",
                 stat_rating: "Average Rating / 10",
                 testimonials_title: "Member Stories",
+                partner_title: "Our Partner",
                 course_1_h: "SSP DevOps Path",
                 course_1_p: "Learn independently and with the community: Docker, Kubernetes, Terraform and automation.",
                 course_3_h: "Tech & Education for Parents",
@@ -1088,9 +1155,17 @@
                 badge_kids: "Parent Special",
                 learn_more: "Discover →",
                 ssp_devops: "SSP DevOps",
-                ssp_cloud: "SSP AWS Cloud",
-                ssp_k8s: "SSP Kubernetes",
-                ssp_kids: "Kids Tech Education"
+                ssp_cm: "Community Manager",
+                ssp_web: "Web Development",
+                ssp_english: "Business English",
+                ssp_german: "German (A1-C1)",
+                ssp_heavy: "Heavy Machinery",
+                course_dev_p: "Master the full arsenal: Docker, Kubernetes, Terraform and CI/CD.",
+                course_cm_p: "Become the expert in social media and online reputation.",
+                course_web_p: "Create modern websites and web applications (Fullstack).",
+                course_en_p: "Boost your career with perfect mastery of professional English.",
+                course_de_p: "Prepare for your study or work projects in Germany.",
+                course_heavy_p: "Technical training in heavy machinery operation and maintenance."
             }
         };
 
@@ -1118,7 +1193,27 @@
             isDeleting = false; // Indispensable pour éviter que l'index ne devienne négatif
             if (textElement) textElement.textContent = ''; // Vide le texte immédiatement
         }
-        
+
+        // --- LOGIQUE NAVIGATION MOBILE ---
+        const menuCheck = document.getElementById('check');
+        const hubItem = document.getElementById('nav-learning-hub');
+        const hubLink = hubItem.querySelector('.nav-link');
+        const dropdown = hubItem.querySelector('.dropdown-content');
+
+        hubLink.addEventListener('click', function(e) {
+            if (window.innerWidth <= 991) {
+                e.preventDefault();
+                dropdown.style.display = dropdown.style.display === 'block' ? 'none' : 'block';
+            }
+        });
+
+        document.querySelectorAll('.nav-menu a').forEach(link => {
+            link.addEventListener('click', () => {
+                if (window.innerWidth <= 991 && link === hubLink) return;
+                menuCheck.checked = false;
+                if (window.innerWidth <= 991) dropdown.style.display = 'none';
+            });
+        });
 
         themeBtn.addEventListener('click', () => {
             setTheme(!document.body.classList.contains('dark-theme'));

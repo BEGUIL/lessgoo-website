@@ -115,18 +115,24 @@
             margin: 0 auto;
         }
 
+        .logo a {
+            display: flex;
+            align-items: center;
+            min-width: 180px;
+        }
+
         .logo img {
-            height: 65px;
+            height: 55px;
             width: auto;
             object-fit: contain;
-            display: block;
+            display: inline-block;
             transition: opacity 0.3s ease;
         }
 
         .nav-menu {
             list-style: none;
             display: flex;
-            gap: 30px;
+            gap: 20px;
             align-items: center;
         }
 
@@ -186,10 +192,12 @@
         .btn-enroll {
             background: var(--primary-color);
             color: #ffffff;
-            padding: 12px 25px;
+            padding: 10px 22px;
             border-radius: 5px;
             font-weight: 600;
             text-decoration: none;
+            display: inline-block;
+            white-space: nowrap;
             transition: var(--transition);
             border: 2px solid var(--primary-color);
         }
@@ -334,7 +342,7 @@
         /* Style pour le lien de la page active */
         .nav-link.active-page {
             color: var(--primary-color) !important;
-            font-weight: 700;
+            font-weight: 600;
         }
         /* --- WHATSAPP BUTTON --- */
         .whatsapp-btn {
@@ -398,20 +406,21 @@
 
             <ul class="nav-menu">
                 <li class="nav-item"><a href="index.html" class="nav-link" data-i18n="nav_home">Accueil</a></li>
-                <li class="nav-item">
-                    <a href="#" class="nav-link"><span data-i18n="nav_courses">Formations</span> <i class="fas fa-chevron-down" style="font-size: 0.7rem;"></i></a>
+                <li class="nav-item" id="nav-learning-hub">
+                    <a href="#" class="nav-link"><span data-i18n="nav_courses">Learning Hub</span> <i class="fas fa-chevron-down" style="font-size: 0.7rem;"></i></a>
                     <ul class="dropdown-content">
-                        <li><a href="#">DevOps Foundation</a></li>
-                        <li><a href="#">AWS Cloud Solutions</a></li>
-                        <li><a href="#">Kubernetes Expert</a></li>
-                        <li><a href="#">CI/CD Pipelines</a></li>
+                        <li><a href="#" data-i18n="ssp_devops">SSP DevOps</a></li>
+                        <li><a href="#" data-i18n="ssp_cm">Community Manager</a></li>
+                        <li><a href="#" data-i18n="ssp_web">Développement Web</a></li>
+                        <li><a href="#" data-i18n="ssp_english">Anglais Business</a></li>
+                        <li><a href="#" data-i18n="ssp_german">Allemand (A1-C1)</a></li>
+                        <li><a href="#" data-i18n="ssp_heavy">Conduite d'engins lourds</a></li>
                     </ul>
                 </li>
-                <li class="nav-item"><a href="#" class="nav-link" data-i18n="nav_infra">Infrastructure</a></li>
-                <li class="nav-item"><a href="#" class="nav-link" data-i18n="nav_blog">Blog</a></li>
+                <li class="nav-item"><a href="about.html" class="nav-link" data-i18n="nav_about">Qui sommes-nous</a></li>
                 <li class="nav-item"><a href="FAQ.html" class="nav-link active-page" data-i18n="nav_faq">FAQ</a></li>
                 <li class="nav-item"><a href="contact.html" class="nav-link" data-i18n="nav_contact">Contact</a></li>
-                <li><a href="#" class="btn-enroll" data-i18n="btn_enroll">S'inscrire</a></li>
+                <li><a href="#" class="btn-enroll" data-i18n="btn_enroll">Rejoindre le Hub</a></li>
                 <li class="theme-toggle" id="theme-btn"><i class="fas fa-moon"></i></li>
                 <li class="mobile-lang-switcher">
                     <div class="language-switcher">
@@ -426,7 +435,7 @@
 
     <section class="faq-hero">
         <h1 class="reveal" data-i18n="faq_title">Foire Aux Questions</h1>
-        <p class="reveal" data-i18n="faq_subtitle">Tout ce que vous devez savoir sur nos formations DevOps</p>
+        <p class="reveal" data-i18n="faq_subtitle">Tout savoir sur l'écosystème LessGooo et nos échanges SSP</p>
     </section>
 
     <div class="faq-grid">
@@ -595,102 +604,100 @@
     <script>
         const translations = {
             fr: {
-                nav_home: "Accueil",
-                nav_courses: "Formations",
-                nav_infra: "Infrastructure",
-                nav_blog: "Blog",
+                nav_home: "Hub Accueil",
+                nav_courses: "Learning Hub",
+                nav_about: "Qui sommes-nous",
                 nav_faq: "FAQ",
                 nav_contact: "Contact",
-                btn_enroll: "S'inscrire",
+                btn_enroll: "Rejoindre le Hub",
                 faq_title: "Foire Aux Questions",
-                faq_subtitle: "Tout ce que vous devez savoir sur nos formations DevOps",
-                faq_q1: "Des connaissances informatiques préalables sont-elles nécessaires ?", faq_a1: "L'inscription ne nécessite aucune connaissance préalable. L'accent est mis sur un environnement adapté à tous les niveaux. La passion et l'engagement sont les seuls prérequis.",
-                faq_q2: "Quelle est la durée du programme de formation ?", faq_a2: "Le programme dure 7 mois. Nous offrons la flexibilité de prolonger gratuitement si vous avez besoin de plus de temps pour assimiler les concepts.",
-                faq_q3: "Quel est le processus d'enrôlement ?", faq_a3: "L'inscription est simple et sans engagement initial. Nous offrons un mois d'essai gratuit avec accès complet avant tout paiement.",
-                faq_q4: "Le programme inclut-il une certification ?", faq_a4: "Oui, vous recevez un certificat à la fin. Nous vous préparons aussi aux certifications AWS, Kubernetes et Terraform pour booster votre profil.",
-                faq_q5: "Soutien après l'obtention d'un emploi ?", faq_a5: "Absolument. Nous avons un groupe de soutien dédié pour aider nos diplômés en poste à résoudre les défis techniques réels en entreprise.",
-                faq_q6: "Accès à des projets pratiques réels ?", faq_a6: "Oui, le programme intègre des laboratoires et des scénarios industriels réels pour maîtriser Docker, Kubernetes et plus encore.",
-                faq_q7: "Besoin d'un ordinateur puissant ?", faq_a7: "Non, un ordinateur standard avec internet suffit. Nous fournissons toute l'infrastructure cloud nécessaire via nos propres serveurs.",
-                faq_q8: "Ressources hors cours ?", faq_a8: "Forums, documentation complète, sessions de rattrapage et entretiens individuels avec les instructeurs sont disponibles.",
-                faq_q9: "Accès aux supports après la formation ?", faq_a9: "Oui, vous gardez l'accès aux ressources et pouvez même rejoindre de futures sessions pour rester à jour techniquement.",
-                faq_q10: "Coaching pour parents ?", faq_a10: "Oui, nous aidons les parents à intégrer les solutions tech dans l'éducation de leurs enfants de manière ludique.",
-                faq_q11: "Guide de démarrage ?", faq_a11: "Dès votre arrivée, vous recevez un pack de ressources pour bien démarrer votre auto-apprentissage SSP.",
-                faq_q12: "Compétences clés acquises ?", faq_a12: "Maîtrise de Linux, Cloud Computing, CI/CD, Infrastructure as Code et gestion de plateformes Cloud.",
-                faq_q13: "Comment rester à jour ?", faq_a13: "C'est la force du Hub : chaque membre partage ses découvertes sur les dernières tendances du marché.",
-                faq_q14: "Profils non-techniques ?", faq_a14: "Tout à fait. Nous partons des bases fondamentales pour construire progressivement votre expertise technique.",
-                faq_q15: "Différents styles d'apprentissage ?", faq_a15: "Nous utilisons un mélange de cours, labs pratiques et sessions interactives pour s'adapter à chaque rythme.",
-                faq_q16: "Limite d'âge ?", faq_a16: "Aucune. Nous accueillons toute personne désireuse d'apprendre, quel que soit son âge.",
-                faq_q17: "Opportunités de réseautage ?", faq_a17: "Oui, via nos événements, nos conférenciers invités et notre communauté active d'alumni à travers le monde.",
-                faq_q18: "Suivi des progrès ?", faq_a18: "Par des évaluations régulières, des soumissions de projets et un suivi de votre participation aux exercices pratiques.",
-                faq_q19: "Fréquence des mises à jour ?", faq_a19: "Le curriculum est revu tous les quelques mois pour refléter l'évolution rapide du DevOps et du Cloud.",
-                faq_q20: "Compétences pratiques ?", faq_a20: "Le programme simule des environnements de travail réels pour garantir que vos compétences sont directement applicables.",
-                faq_q21: "Ratio instructeur/étudiant ?", faq_a21: "Nous maintenons un ratio favorable pour garantir une attention personnalisée et un apprentissage efficace.",
-                faq_q22: "Mentorat de carrière ?", faq_a22: "Oui, nous aidons à la rédaction de CV, à la préparation des entretiens et au développement professionnel continu.",
-                faq_q23: "Possibilité de spécialisation ?", faq_a23: "Oui, via des modules optionnels et des projets spécifiques selon vos intérêts techniques.",
-                faq_q24: "Mécanismes de qualité ?", faq_a24: "Sessions de feedback régulières, formation continue des instructeurs et révisions basées sur les besoins de l'industrie.",
-                faq_q25: "Étudiants internationaux ?", faq_a25: "Bienvenue. Nous adaptons nos horaires pour les différents fuseaux horaires et développons des supports multilingues.",
-                faq_q26: "Prise en compte du feedback ?", faq_a26: "Essentiel. Nous utilisons vos retours via sondages et discussions pour améliorer constamment le programme.",
-                faq_q27: "Histoires de réussite ?", faq_a27: "Nombreux diplômés en poste dans des entreprises internationales de renom après notre formation.",
-                faq_q28: "Réussite spécifique en Afrique ?", faq_a28: "Plusieurs succès notables de participants africains occupant aujourd'hui des rôles clés dans le secteur IT global.",
-                faq_q29: "Défis en Afrique (Connectivité) ?", faq_a29: "Nous proposons des supports téléchargeables et des horaires flexibles pour pallier les problèmes de connexion.",
-                faq_q30: "Collaborations locales en Afrique ?", faq_a30: "Oui, nous travaillons avec des organisations locales pour adapter le contenu au contexte africain.",
-                faq_q31: "Supports multilingues en Afrique ?", faq_a31: "Principalement en anglais actuellement, avec des ressources en français et autres langues en cours de développement.",
-                faq_q32: "Barrières à l'emploi en Afrique ?", faq_a32: "Support carrière sur mesure pour aider à naviguer sur le marché local et international.",
-                faq_q33: "Anciens élèves entrepreneurs (Afrique) ?", faq_a33: "Plusieurs de nos alumni africains ont lancé avec succès leurs propres startups technologiques.",
-                faq_q34: "Accessibilité financière (Afrique) ?", faq_a34: "Options d'aide financière, bourses et plans de paiement flexibles adaptés aux réalités économiques.",
-                faq_q35: "Réseautage pour Africains ?", faq_a35: "Meetups virtuels, webinaires et accès direct à notre réseau mondial d'alumni.",
-                faq_q36: "Visibilité mondiale ?", faq_a36: "Promotion active de vos projets et succès sur nos plateformes internationales.",
-                faq_q37: "Support post-formation Afrique ?", faq_a37: "Conseil carrière continu et accès à un portail d'emploi dédié au marché africain.",
-                faq_q38: "Adaptation au paysage africain ?", faq_a38: "Curriculum intégrant des études de cas et experts du secteur technologique africain."
+                faq_subtitle: "Tout savoir sur l'écosystème LessGooo et nos programmes SSP multidisciplinaires",
+                faq_q1: "Quelles sont les formations disponibles au Hub ?", faq_a1: "Nous proposons des programmes SSP en DevOps & Cloud, Community Management, Développement Web, Anglais Business, Allemand (A1-C1) et Conduite d'engins lourds.",
+                faq_q2: "Faut-il des connaissances de base pour s'inscrire ?", faq_a2: "Non, nos programmes sont accessibles à tous. Nous partons des fondamentaux pour chaque filière technique ou linguistique.",
+                faq_q3: "Quelle est la durée moyenne d'une formation ?", faq_a3: "La durée standard est de 7 mois. Cependant, notre méthode SSP permet une flexibilité totale selon votre rythme d'assimilation.",
+                faq_q4: "Proposez-vous une période d'essai ?", faq_a4: "Oui, LessGooo offre un mois d'essai gratuit pour tester l'environnement, la communauté et la méthode de travail avant tout engagement.",
+                faq_q5: "En quoi consiste le programme DevOps ?", faq_a5: "C'est un parcours intensif sur Docker, Kubernetes, Terraform, AWS et CI/CD, axé à 70% sur la pratique en laboratoire réel.",
+                faq_q6: "Le programme Community Management est-il pour les débutants ?", faq_a6: "Oui, il couvre tout : de la création de contenu à la stratégie publicitaire et la gestion de l'e-réputation.",
+                faq_q7: "Qu'apprend-on en Développement Web ?", faq_a7: "Vous apprenez à créer des applications modernes Fullstack (Frontend et Backend) avec des projets concrets à ajouter à votre portfolio.",
+                faq_q8: "Quels sont les niveaux couverts en Allemand ?", faq_a8: "Nous couvrons du niveau débutant A1 au niveau avancé C1, avec une préparation spécifique aux examens officiels (Goethe/TestDaF).",
+                faq_q9: "La formation en engins lourds inclut-elle la maintenance ?", faq_a9: "Absolument. En plus de la conduite technique, nous enseignons les bases de la maintenance préventive des engins de chantier.",
+                faq_q10: "Où se trouve physiquement le Hub ?", faq_a10: "Notre Hub principal est situé à Douala, Bonabérie Mabandas, juste derrière la station BOCOM.",
+                faq_q11: "Les formations sont-elles certifiantes ?", faq_a11: "Vous recevez un certificat de fin de parcours LessGooo. Nous vous préparons également aux certifications internationales (AWS, Kubernetes, TOEFL, etc.).",
+                faq_q12: "Ai-je besoin d'un ordinateur puissant ?", faq_a12: "Pour le DevOps et le Web, un PC standard suffit car nous fournissons toute l'infrastructure Cloud nécessaire sur nos propres serveurs.",
+                faq_q13: "Proposez-vous un accompagnement pour l'emploi ?", faq_a13: "Oui, nous aidons à l'optimisation des profils LinkedIn, la rédaction de CV et nous offrons un soutien technique même après votre embauche.",
+                faq_q14: "Le Hub est-il ouvert aux parents ?", faq_a14: "Oui, nous avons un volet spécifique pour accompagner les parents dans l'éveil technologique de leurs enfants.",
+                faq_q15: "Qu'est-ce que le Self-Study Program (SSP) ?", faq_a15: "C'est un modèle d'apprentissage autonome mais guidé par des mentors et une communauté active, favorisant l'échange entre pairs.",
+                faq_q16: "Les cours sont-ils en présentiel ou en ligne ?", faq_a16: "Nous adoptons un modèle hybride : ressources accessibles en ligne 24/7 et sessions d'échange/pratique au Hub de Douala.",
+                faq_q17: "Peut-on payer en plusieurs tranches ?", faq_a17: "Oui, nous proposons des plans de paiement flexibles adaptés à la situation de chaque membre du Hub.",
+                faq_q18: "Y a-t-il une limite d'âge ?", faq_a18: "Aucune. La passion et la volonté d'apprendre sont les seuls critères d'admission.",
+                faq_q19: "Comment se font les évaluations ?", faq_a19: "Par la réalisation de projets concrets et de laboratoires pratiques notés par les mentors.",
+                faq_q20: "Peut-on suivre deux formations à la fois ?", faq_a20: "C'est possible grâce à la flexibilité du SSP, mais nous recommandons de se concentrer sur une filière technique à la fois.",
+                faq_q21: "Les mentors sont-ils des professionnels ?", faq_a21: "Oui, tous nos mentors sont des experts en poste dans des entreprises locales et internationales.",
+                faq_q22: "Offrez-vous du support 24/7 ?", faq_a22: "Notre communauté sur Discord et WhatsApp permet d'obtenir de l'aide à tout moment de la journée.",
+                faq_q23: "Le Hub aide-t-il les entrepreneurs ?", faq_a23: "Oui, nous aidons les freelances en CM et Web à structurer leurs offres et à trouver leurs premiers clients.",
+                faq_q24: "Quels sont les outils utilisés en DevOps ?", faq_a24: "Linux, Docker, Kubernetes, Ansible, Terraform, Jenkins et les plateformes Cloud (AWS/Azure).",
+                faq_q25: "L'Anglais Business est-il axé sur l'oral ?", faq_a25: "Oui, nous mettons l'accent sur la communication professionnelle, les présentations et la négociation.",
+                faq_q26: "Quels types d'engins apprend-on à conduire ?", faq_a26: "Pelles hydrauliques, chargeuses, bulldozers et autres engins de génie civil majeurs.",
+                faq_q27: "Comment s'inscrire ?", faq_a27: "Via notre site web ou en passant directement nous voir au Hub à Bonabérie.",
+                faq_q28: "Les formations sont-elles à jour ?", faq_a28: "Nos curriculums sont révisés tous les 4 mois pour coller aux dernières évolutions du marché mondial.",
+                faq_q29: "Peut-on s'inscrire depuis l'étranger ?", faq_a29: "Oui, nous accueillons des membres de toute l'Afrique et de la diaspora via nos plateformes distantes.",
+                faq_q30: "Y a-t-il des sessions de réseautage ?", faq_a30: "Oui, nous organisons régulièrement des meetups et des conférences avec des leaders du secteur tech.",
+                faq_q31: "Le Hub propose-t-il des stages ?", faq_a31: "Nous facilitons la mise en relation avec nos entreprises partenaires pour des opportunités de stage et d'emploi.",
+                faq_q32: "Quelle est la langue d'enseignement ?", faq_a32: "Français et Anglais, selon la filière et les besoins du groupe de travail.",
+                faq_q33: "Peut-on accéder aux serveurs à distance ?", faq_a33: "Oui, nos laboratoires Cloud sont accessibles de n'importe où avec une simple connexion internet.",
+                faq_q34: "Le certificat LessGooo est-il reconnu ?", faq_a34: "Il est reconnu par nos partenaires locaux et témoigne de vos compétences pratiques réelles.",
+                faq_q35: "Apprend-on le référencement (SEO) en CM ?", faq_a35: "Oui, le SEO et le SEM sont des modules clés du programme Community Management.",
+                faq_q36: "Combien d'heures par semaine faut-il ?", faq_a36: "Nous recommandons au moins 10 à 15 heures par semaine pour progresser efficacement.",
+                faq_q37: "Peut-on changer de formation en cours de route ?", faq_a37: "Oui, après discussion avec un mentor pour valider la cohérence de votre projet professionnel.",
+                faq_q38: "Comment contacter le support technique ?", faq_a38: "Via le formulaire de contact du site ou directement par WhatsApp au +237 656 84 48 82."
             },
             en: {
-                nav_home: "Home",
-                nav_courses: "Courses",
-                nav_infra: "Infrastructure",
-                nav_blog: "Blog",
+                nav_home: "Hub Home",
+                nav_courses: "Learning Hub",
+                nav_about: "About Us",
                 nav_faq: "FAQ",
                 nav_contact: "Contact",
-                btn_enroll: "Enroll Now",
+                btn_enroll: "Join the Hub",
                 faq_title: "Frequently Asked Questions",
-                faq_subtitle: "Everything you need to know about our DevOps training",
-                faq_q1: "Is prior computer knowledge necessary?", faq_a1: "Enrollment does not necessitate any prior computer knowledge. Passion and commitment are the primary prerequisites.",
-                faq_q2: "How long is the training program?", faq_a2: "Our program spans 7 months. We offer free program extensions if you need extra time to enhance your understanding.",
-                faq_q3: "What is the enrollment process?", faq_a3: "Enrollment is commitment-free. We offer a one-month trial period with unrestricted access before any financial commitment.",
-                faq_q4: "Does the program include a certification?", faq_a4: "Yes, participants are awarded a certification. We also guide you through industry certifications like AWS or Kubernetes.",
-                faq_q5: "Do you offer support after securing a job?", faq_a5: "Yes, we have a dedicated alumni support group where graduates can share experiences and solve technical challenges together.",
-                faq_q6: "Will I have access to hands-on projects?", faq_a6: "Certainly. Our training emphasizes practical application through real-world scenarios and industrial projects.",
-                faq_q7: "Do I need a powerful computer?", faq_a7: "No, a basic computer with internet is enough. We provide the entire cloud infrastructure required for the course.",
-                faq_q8: "Support outside of class?", faq_a8: "Access to online forums, documentation, support channels, catch-up sessions, and one-on-one sessions with instructors.",
-                faq_q9: "Access after completion?", faq_a9: "Absolutely. You retain access to resources and can even join future class sessions to further enrich your knowledge.",
-                faq_q10: "LinkedIn profile assistance?", faq_a10: "Yes, we provide dedicated guidance for creating a compelling LinkedIn profile and an industry-standard CV.",
-                faq_q11: "Preparatory materials?", faq_a11: "We provide pre-assessments and preparatory materials, including pre-videos on all topics, to help you prepare.",
-                faq_q12: "Key skills gained?", faq_a12: "Proficiency in DevOps practices, Cloud computing architectures, and Linux system administration.",
-                faq_q13: "Staying current with industry?", faq_a13: "We continuously collaborate with industry experts and conduct regular curriculum reviews.",
-                faq_q14: "Non-technical backgrounds succeed?", faq_a14: "Absolutely. We start with the basics and progressively build up to advanced technical expertise.",
-                faq_q15: "Learning speeds/styles?", faq_a15: "We offer a blend of methods including lectures, hands-on labs, and self-paced materials.",
-                faq_q16: "Age limit?", faq_a16: "There is no strict age limit. We welcome participants of all ages eager to learn.",
-                faq_q17: "Networking opportunities?", faq_a17: "Yes, including networking events, guest lectures, and an active online community.",
-                faq_q18: "Progress monitoring?", faq_a18: "Evaluated through regular assessments, project submissions, and practical exercises.",
-                faq_q19: "Update frequency?", faq_a19: "The curriculum is updated every few months to reflect the latest technological advancements.",
-                faq_q20: "Practical skills integrated?", faq_a20: "Hands-on labs and real-world projects simulate actual work environments for job readiness.",
-                faq_q21: "Instructor-to-student ratio?", faq_a21: "Favorable ratio to ensure personalized attention and tailored guidance for every student.",
-                faq_q22: "Career counseling/mentorship?", faq_a22: "Yes, providing guidance on career paths, resume building, and interview preparation.",
-                faq_q23: "Choice to specialize?", faq_a23: "Opportunity to delve deeper into specific areas via elective modules or special projects.",
-                faq_q24: "Quality mechanisms?", faq_a24: "Feedback sessions, continuous instructor training, and industry-based curriculum revisions.",
-                faq_q25: "International students?", faq_a25: "Welcome. We offer classes at varying times and are developing multilingual materials.",
-                faq_q26: "Feedback incorporation?", faq_a26: "Feedback is collected via surveys and sessions to continuously improve the program.",
-                faq_q27: "Employment success stories?", faq_a27: "Numerous graduates have built successful careers in prominent companies worldwide.",
-                faq_q28: "African participant success?", faq_a28: "Many African participants have secured prominent roles in the global tech sector.",
-                faq_q29: "African challenges (internet)?", faq_a29: "Downloadable materials for offline study and flexible class hours to accommodate connectivity.",
-                faq_q30: "Collaborations in Africa?", faq_a30: "Partnerships with local organizations help tailor content to the African context.",
-                faq_q31: "Multiple languages (Africa)?", faq_a31: "Currently in English, with multilingual resources for the continent in development.",
-                faq_q32: "Overcoming barriers (Africa)?", faq_a32: "Comprehensive career support tailored specifically to the needs of African participants.",
-                faq_q33: "Tech businesses (Africa)?", faq_a33: "African alumni have successfully started their own tech businesses and startups.",
-                faq_q34: "Affordability (Africa)?", faq_a34: "Financial assistance, scholarships, and flexible payment plans are available.",
-                faq_q35: "Networking (Africa)?", faq_a35: "Virtual meetups and connections with our global alumni network for African participants.",
-                faq_q36: "Visibility (Africa)?", faq_a36: "Actively promote achievements of African participants within the global tech community.",
-                faq_q37: "Post-training support (Africa)?", faq_a37: "Tailored career counseling and a job portal relevant to African market dynamics.",
-                faq_q38: "Landscape adaptation (Africa)?", faq_a38: "Reflecting unique technological landscapes and market needs through local case studies."
+                faq_subtitle: "Everything you need to know about the LessGooo ecosystem and our multidisciplinary SSP programs",
+                faq_q1: "What training programs are available at the Hub?", faq_a1: "We offer SSP programs in DevOps & Cloud, Community Management, Web Development, Business English, German (A1-C1), and Heavy Machinery operation.",
+                faq_q2: "Do I need prior knowledge to enroll?", faq_a2: "No, our programs are open to everyone. We start from the fundamentals for each technical or linguistic field.",
+                faq_q3: "How long is the typical training?", faq_a3: "The standard duration is 7 months. However, our SSP method allows for total flexibility based on your learning speed.",
+                faq_q4: "Do you offer a trial period?", faq_a4: "Yes, LessGooo offers a free trial month to test the environment, the community, and the work method before any commitment.",
+                faq_q5: "What does the DevOps program consist of?", faq_a5: "It is an intensive path covering Docker, Kubernetes, Terraform, AWS, and CI/CD, with 70% focus on real-world lab practice.",
+                faq_q6: "Is the Community Management program for beginners?", faq_a6: "Yes, it covers everything: from content creation to advertising strategy and online reputation management.",
+                faq_q7: "What do we learn in Web Development?", faq_a7: "You learn to create modern Fullstack applications (Frontend and Backend) with concrete projects to add to your portfolio.",
+                faq_q8: "What levels are covered in German?", faq_a8: "We cover from beginner A1 to advanced C1, with specific preparation for official exams (Goethe/TestDaF).",
+                faq_q9: "Does heavy machinery training include maintenance?", faq_a9: "Absolutely. In addition to technical operation, we teach the basics of preventive maintenance for construction equipment.",
+                faq_q10: "Where is the Hub physically located?", faq_a10: "Our main Hub is located in Douala, Bonabérie Mabandas, right behind the BOCOM station.",
+                faq_q11: "Are the courses certified?", faq_a11: "You receive a LessGooo completion certificate. We also prepare you for international certifications (AWS, Kubernetes, TOEFL, etc.).",
+                faq_q12: "Do I need a powerful computer?", faq_a12: "For DevOps and Web, a standard PC is enough because we provide all the necessary Cloud infrastructure on our own servers.",
+                faq_q13: "Do you offer job placement support?", faq_a13: "Yes, we help with LinkedIn profile optimization, CV writing, and we offer technical support even after you are hired.",
+                faq_q14: "Is the Hub open to parents?", faq_a14: "Yes, we have a specific program to help parents in the technological awakening of their children.",
+                faq_q15: "What is the Self-Study Program (SSP)?", faq_a15: "It is an autonomous learning model guided by mentors and an active community, promoting peer-to-peer exchange.",
+                faq_q16: "Are classes in-person or online?", faq_a16: "We adopt a hybrid model: resources accessible online 24/7 and exchange/practice sessions at the Douala Hub.",
+                faq_q17: "Can we pay in installments?", faq_a17: "Yes, we offer flexible payment plans adapted to the situation of each Hub member.",
+                faq_q18: "Is there an age limit?", faq_a18: "None. Passion and the will to learn are the only admission criteria.",
+                faq_q19: "How are evaluations done?", faq_a19: "Through the realization of concrete projects and practical labs graded by mentors.",
+                faq_q20: "Can I take two courses at once?", faq_a20: "It's possible thanks to the flexibility of the SSP, but we recommend focusing on one technical field at a time.",
+                faq_q21: "Are the mentors professionals?", faq_a21: "Yes, all our mentors are experts currently working in local and international companies.",
+                faq_q22: "Do you offer 24/7 support?", faq_a22: "Our community on Discord and WhatsApp allows you to get help at any time of the day.",
+                faq_q23: "Does the Hub help entrepreneurs?", faq_a23: "Yes, we help CM and Web freelancers structure their offers and find their first clients.",
+                faq_q24: "What tools are used in DevOps?", faq_a24: "Linux, Docker, Kubernetes, Ansible, Terraform, Jenkins, and Cloud platforms (AWS/Azure).",
+                faq_q25: "Is Business English focused on speaking?", faq_a25: "Yes, we emphasize professional communication, presentations, and negotiation.",
+                faq_q26: "What types of machinery do we learn to operate?", faq_a26: "Excavators, loaders, bulldozers, and other major civil engineering equipment.",
+                faq_q27: "How to register?", faq_a27: "Via our website or by coming directly to see us at the Hub in Bonabérie.",
+                faq_q28: "Are the training programs up to date?", faq_a28: "Our curriculums are reviewed every 4 months to align with the latest global market developments.",
+                faq_q29: "Can I register from abroad?", faq_a29: "Yes, we welcome members from all over Africa and the diaspora via our remote platforms.",
+                faq_q30: "Are there networking sessions?", faq_a30: "Yes, we regularly organize meetups and conferences with tech industry leaders.",
+                faq_q31: "Does the Hub offer internships?", faq_a31: "We facilitate connections with our partner companies for internship and employment opportunities.",
+                faq_q32: "What is the language of instruction?", faq_a32: "French and English, depending on the field and the needs of the working group.",
+                faq_q33: "Can we access servers remotely?", faq_a33: "Yes, our Cloud labs are accessible from anywhere with a simple internet connection.",
+                faq_q34: "Is the LessGooo certificate recognized?", faq_a34: "It is recognized by our local partners and testifies to your real practical skills.",
+                faq_q35: "Do we learn SEO in CM?", faq_a35: "Yes, SEO and SEM are key modules of the Community Management program.",
+                faq_q36: "How many hours per week are needed?", faq_a36: "We recommend at least 10 to 15 hours per week to progress effectively.",
+                faq_q37: "Can I change courses midway?", faq_a37: "Yes, after discussion with a mentor to validate the consistency of your professional project.",
+                faq_q38: "How to contact technical support?", faq_a38: "Via the website contact form or directly via WhatsApp at +237 656 84 48 82."
             }
         };
 
@@ -702,7 +709,7 @@
         
         function setTheme(isDark) {
             body.classList.toggle('dark-theme', isDark);
-            logoImg.src = isDark ? 'images/logo1.jpg' : 'images/logo2.png';
+            if (logoImg) logoImg.src = isDark ? 'images/logo1.jpg' : 'images/logo2.png';
             themeIcon.className = isDark ? 'fas fa-sun' : 'fas fa-moon';
             localStorage.setItem('theme', isDark ? 'dark' : 'light');
             updateHeaderScroll();
@@ -734,6 +741,27 @@
                 highlightActiveLink(); // Re-highlight after language change
             });
         }
+
+        // --- LOGIQUE NAVIGATION MOBILE ---
+        const menuCheck = document.getElementById('check');
+        const hubItem = document.getElementById('nav-learning-hub');
+        const hubLink = hubItem.querySelector('.nav-link');
+        const dropdown = hubItem.querySelector('.dropdown-content');
+
+        hubLink.addEventListener('click', function(e) {
+            if (window.innerWidth <= 991) {
+                e.preventDefault();
+                dropdown.style.display = dropdown.style.display === 'block' ? 'none' : 'block';
+            }
+        });
+
+        document.querySelectorAll('.nav-menu a').forEach(link => {
+            link.addEventListener('click', () => {
+                if (window.innerWidth <= 991 && link === hubLink) return;
+                menuCheck.checked = false;
+                if (window.innerWidth <= 991) dropdown.style.display = 'none';
+            });
+        });
 
         // Header Scroll Effect
         function updateHeaderScroll() {
